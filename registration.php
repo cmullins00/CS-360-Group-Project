@@ -14,20 +14,17 @@
         $username = stripslashes($_REQUEST['username']);
         //escapes special characters in a string
         $username = mysqli_real_escape_string($con, $username);
-
-        $firstname    = stripslashes($_REQUEST['firstname']);
-        $firstname    = mysqli_real_escape_string($con, $firstname);
-
-        $lastname     = stripslashes($_REQUEST['lastname']);
-        $lastname    = mysqli_real_escape_string($con, $lastname);
-
         $email    = stripslashes($_REQUEST['email']);
         $email    = mysqli_real_escape_string($con, $email);
         $password = stripslashes($_REQUEST['password']);
         $password = mysqli_real_escape_string($con, $password);
+        $first_name = stripslashes($_REQUEST['first_name']);
+        $first_name = mysqli_real_escape_string($con, $first_name);
+        $last_name = stripslashes($_REQUEST['last_name']);
+        $last_name = mysqli_real_escape_string($con, $last_name);
         $create_datetime = date("Y-m-d H:i:s");
-        $query    = "INSERT into `users` (username, firstname, lastname, password, email, create_datetime)
-                     VALUES ('$username', '$firstname', '$lastname', '" . md5($password) . "', '$email', '$create_datetime')";
+        $query    = "INSERT into `users` (username, password, email, first_name, last_name, create_datetime)
+                     VALUES ('$username', '" . md5($password) . "', '$email', '$first_name', '$last_name', '$create_datetime')";
         $result   = mysqli_query($con, $query);
         if ($result) {
             echo "<div class='form'>
@@ -45,12 +42,12 @@
     <form class="form" action="" method="post">
         <h1 class="login-title">Registration</h1>
         <input type="text" class="login-input" name="username" placeholder="Username" required />
-        <input type="text" class="login-input" name="firstname" placeholder="First Name">
-        <input type="text" class="login-input" name="lastname" placeholder="Last Name">
         <input type="text" class="login-input" name="email" placeholder="Email Adress">
         <input type="password" class="login-input" name="password" placeholder="Password">
+        <input type="text" class="login-input" name="first_name" placeholder="First Name">
+        <input type="text" class="login-input" name="last_name" placeholder="Last Name">
         <input type="submit" name="submit" value="Register" class="login-button">
-        <p class="link">Already have an account? <a href="login.php">Login here</a></p>
+        <p class="link"><a href="login.php">Click to Login</a></p>
     </form>
 <?php
     }

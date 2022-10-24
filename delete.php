@@ -1,30 +1,27 @@
 <?php
-include("db.php");
+include('db.php');
+include("auth_session.php");
 error_reporting(0);
-
-$temp = $_GET['var'];
-$sql = "DELETE FROM users WHERE id = '$temp'";
-
-$data=mysqli_query($con, $sql);
-
+$id = $_GET['rn'];
+$query = "DELETE FROM USERS WHERE ID = '$id'";
+$data = mysqli_query($con,$query);
 if($data)
 {
-	echo $a;
-	echo "<font color = 'green'>Record Deleted from Database";
+	echo "<font color='green'>User Deleted from Database";
 }
-else 
+else
 {
-	echo "<font color = 'red'>Failed to Delete Record from Database";
+	echo "<font color='red'>Failed to Delete User from Database";
 }
-
 ?>
-
 <!DOCTYPE html>
 <html>
-	<body>
-		<br>
-		<a href = "table.php?">Return to Table</a>
-		<br>
-		<a href = "logout.php?">Logout</a>
-	</body>
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard - Client area</title>
+    
+</head>
+<body>
+        <p><a href="users.php">Back</a></p>
+</body>
 </html>

@@ -12,10 +12,9 @@ include("auth_session.php");
 <body>
     <div class="form">
         <p>Hey, <?php echo $_SESSION['username']; ?>!</p>
-
-        <p>You are in user dashboard page.</p>
-        <p><a href="table.php">Home Page</a></p>
+        <p>You are now user dashboard page.</p>
         <p><a href="logout.php">Logout</a></p>
+        <p><a href="users.php">Users</a></p>
     </div>
 </body>
 </html>

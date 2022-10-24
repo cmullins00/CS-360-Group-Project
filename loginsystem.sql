@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2022 at 08:18 AM
+-- Generation Time: Oct 12, 2022 at 05:55 AM
 -- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- PHP Version: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,12 +28,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `users` (
-  `ID` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `firstname` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `Password` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
   `create_datetime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -41,10 +41,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`ID`, `username`, `firstname`, `lastname`, `Email`, `Password`, `create_datetime`) VALUES
-(10, 'goof', 'corn', 'dog', 'email@email.com', '81dc9bdb52d04dc20036dbd8313ed055', '2022-10-12 06:54:58'),
-(12, 'dummy', 'd', 'ummy', 'dumm@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '2022-10-12 07:37:15'),
-(13, 'dingdong', 'hello', 'goodbye', 'gmail@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2022-10-12 08:16:35');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `create_datetime`) VALUES
+(5, 'triston', 'cooldude101triston@gmail.com', '9d2c835a28b314d3d7a6a8eb740bf683', 'triston', 'tsdfasdf', '2022-10-12 04:35:46'),
+(9, 'mman', 'mikeh@gmail.com', '955b4144ca4bad34d49882e1ef1517cf', 'mike', 'hunt', '2022-10-12 05:53:15'),
+(10, 'kekora5614', 'kekora5614@mxgsby.com', 'fee07ffc47fd039f006060fcf8ac99f9', 'kylie', 'korra', '2022-10-12 05:53:47'),
+(11, 'soyarew131', 'soyarew131@nubenews.com', 'f55cfd082baad8b764fe0ce91e52b67b', 'Sawyer', 'ewan', '2022-10-12 05:54:14');
 
 --
 -- Indexes for dumped tables
@@ -54,7 +55,7 @@ INSERT INTO `users` (`ID`, `username`, `firstname`, `lastname`, `Email`, `Passwo
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -64,7 +65,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
