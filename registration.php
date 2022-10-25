@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>Registration</title>
+    <title>User Registration</title>
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -40,7 +40,7 @@
     } else {
 ?>
     <form class="form" action="" method="post">
-        <h1 class="login-title">Registration</h1>
+        <h1 class="login-title">User Registration</h1>
         <input type="text" class="login-input" name="username" placeholder="Username" required />
         <input type="text" class="login-input" name="email" placeholder="Email Adress">
         <input type="password" class="login-input" name="password" placeholder="Password">
