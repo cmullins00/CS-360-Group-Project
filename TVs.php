@@ -22,7 +22,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
     <a href="dashboard.php" class="w3-bar-item w3-button">Go Back</a>
-    <a href="TVs.php" class="w3-bar-item w3-button">Update Search</a>
+    <a href="#" class="w3-bar-item w3-button">Update Search</a>
     <a href="TVs.php" class="w3-bar-item w3-button">TV's</a>
     
     <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
