@@ -5,7 +5,7 @@ include("auth_session.php");
 <!DOCTYPE html>
 <html>
 <head>
-<title>W3.CSS Template</title>
+<title>Customer Dashboard</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -26,7 +26,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
     <h3 class="w3-wide"><b>Products</b></h3>
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-    <a href="TVs.php" class="w3-bar-item w3-button">TV's'</a>
+    <a href="TVs.php" class="w3-bar-item w3-button">TV's</a>
     <a href="Computers.php" class="w3-bar-item w3-button">Computers</a>
     <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
       Electronics <i class="fa fa-caret-down"></i>
