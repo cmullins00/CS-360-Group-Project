@@ -12,6 +12,21 @@
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
 </style>
+<style>
+  table {
+  border-collapse: collapse;
+  width: 100%;
+  color: black;
+  font-family: monospace;
+  font-size: 25px;
+  text-align: left;
+  }
+  th {
+  background-color: black;
+  color: white;
+  }
+  tr:nth-child(even) {background-color: #f2f2f2}
+</style>
 </head>
 <body class="w3-content" style="max-width:1200px; background-color:lightgrey">
 <!-- Sidebar/menu -->
@@ -29,31 +44,34 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
       TV Sreen Size <i class="fa fa-caret-down"></i>
     </a>
     <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-      <label for="vehicle1">32 inches</label><br>
-      <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-      <label for="vehicle1">43 inches</label><br>
-      <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-      <label for="vehicle1">55 inches</label><br>
-      <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-      <label for="vehicle1">65 inches</label><br>
+      <form method="post">
+        <input type="checkbox" id="size1" name="size1" value="32">
+        <label for="size1">32 inches</label><br>
+        <input type="checkbox" id="size2" name="size2" value="43">
+        <label for="size2">43 inches</label><br>
+        <input type="checkbox" id="size3" name="size3" value="55">
+        <label for="size3">55 inches</label><br>
+        <input type="checkbox" id="size4" name="size4" value="65">
+        <label for="size4">65 inches</label><br>
+        <button type="submit" name = "submit" value = 1>Submit</button>
+      </form>
     </div>
 
-    <a onclick="myAccFunc2()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+    <a onclick="myAccFunc2()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn2">
       Resolution <i class="fa fa-caret-down"></i>
     </a>
     <div id="demoAcc2" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-      <label for="vehicle1">8k</label><br>
-      <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-      <label for="vehicle1">4k</label><br>
-      <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-      <label for="vehicle1">1080p</label><br>
-      <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-      <label for="vehicle1">720p</label><br>
+      <input type="checkbox" id="res1" name="res1" value="8k">
+      <label for="res1">8k</label><br>
+      <input type="checkbox" id="res2" name="res2" value="4k">
+      <label for="res2">4k</label><br>
+      <input type="checkbox" id="res3" name="res3" value="1080p">
+      <label for="res3">1080p</label><br>
+      <input type="checkbox" id="res4" name="res4" value="720p">
+      <label for="res4">720p</label><br>
     </div>
 
-    <a onclick="myAccFunc3()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+    <a onclick="myAccFunc3()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn3">
       Model Year <i class="fa fa-caret-down"></i>
     </a>
     <div id="demoAcc3" class="w3-bar-block w3-hide w3-padding-large w3-medium">
@@ -73,7 +91,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
       <label for="vehicle1">2016 and Older</label><br>
     </div>
 
-    <a onclick="myAccFunc4()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+    <a onclick="myAccFunc4()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn4">
       Price <i class="fa fa-caret-down"></i>
     </a>
     <div id="demoAcc4" class="w3-bar-block w3-hide w3-padding-large w3-medium">
@@ -93,7 +111,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
       <label for="vehicle1">600+</label><br>
     </div>
 
-    <a onclick="myAccFunc5()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+    <a onclick="myAccFunc5()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn5">
       Brands <i class="fa fa-caret-down"></i>
     </a>
     <div id="demoAcc5" class="w3-bar-block w3-hide w3-padding-large w3-medium">
@@ -122,6 +140,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
   <a href="#footer"  class="w3-bar-item w3-button w3-padding">Subscribe</a>
 </nav>
 
+
+
 <!-- Top menu on small screens -->
 <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
   <div class="w3-bar-item w3-padding-24 w3-wide">LOGO</div>
@@ -148,6 +168,50 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
     
 
   </header>
+
+  <table>
+        <tr>
+            <th>Id</th>
+            <th>Screen Size</th>
+            <th>Resolution</th>
+            <th>Year</th>
+            <th>Price</th>
+            <th>Brand</th>
+            <th>operation</th>
+        </tr>
+
+        <?php
+        require('db.php');
+        echo $_POST['submit'];
+        if (isset($_POST['submit']))
+        {
+          $sql = "SELECT id, ScreenSize, Resolution, Year, Price, Brand  
+          FROM tv
+          WHERE ScreenSize = 55";
+          $result = $con->query($sql);
+          if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "<tr>
+                <td>" . $row["id"]. "</td>
+                <td>" . $row["ScreenSize"] . "</td>
+                <td>". $row["Resolution"]. "</td>
+                <td>" . $row["Year"] . "</td>
+                <td>" . $row["Price"] . "</td>
+                <td>" . $row["Brand"] . "</td>
+                <td><a href = 'delete.php?rn=$row[id]'>Delete</td></tr>";
+            }
+            echo "</table>";
+          } 
+          else 
+          { 
+            echo "0 results"; 
+          }
+        }
+        
+        ?>
+
+    </table>
 
   <div class="w3-black w3-center w3-bottom w3-padding-24">Enjoy your TV :D<a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity"></a></div>
 
