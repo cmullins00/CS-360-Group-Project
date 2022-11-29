@@ -40,18 +40,27 @@
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
     <a href="dashboard.php" class="w3-bar-item w3-button">Go Back</a>
-    <a href="#" class="w3-bar-item w3-button">Update Search</a>
-    <a href="TVs.php" class="w3-bar-item w3-button">TV's</a>
+    <input type="submit" class="w3-bar-item w3-button" onclick="submitForms()" id="sub"/>
+    <!-- <input type="submit" class="w3-bar-item w3-button" onclick="submitForms()"/> -->
+
+    <!-- <a href="#" class="w3-bar-item w3-button">Update Search</a> -->
+
+    <!-- form.demoAcc.onclick = function1(){ $('#form1 #form2 #form3').submit(); }); -->
+
+    <!-- <a onclick="function(){ $('#box1').submit(); });" class="w3-bar-item w3-button">Update Search</a> -->
+
+
+    <a href="TVs.php" class="w3-bar-item w3-button">Reset Search</a>
     
+    <form action="" method="GET" id="box1">
     <!-- TV Checkboxes -->
     <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
       TV Screen Size <i class="fa fa-caret-down"></i>
     </a>
 
     <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <form action="" method="GET" id="box1">
         <div>
-            <button type="submit">Search</button>
+            <button id="sub" type="submit">Search</button>
         </div>
         <?php
         require('db.php');
@@ -70,10 +79,10 @@
                 }
                 ?>
                     <div>
-                        <input type="checkbox" name="sizes[]" value="<?= $sizelist['ScreenSize']; ?>"
+                        <input type="checkbox" name="sizes[]" id="1" value="<?= $sizelist['ScreenSize']; ?>"
                             <?php if(in_array($sizelist['ScreenSize'], $checked)){ echo "checked"; } ?>
                         />
-                        <?= $sizelist['ScreenSize']; ?>
+                        <?= $sizelist['ScreenSize']; ?> inches
                     </div>
                 <?php
             }
@@ -83,18 +92,17 @@
           echo "No Options"; 
         }
         ?>
-      </form>
+      
     </div>
-
+    
     <!-- Resolution Checkboxes -->
     <a onclick="myAccFunc2()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
       Resolution <i class="fa fa-caret-down"></i>
     </a>
 
     <div id="demoAcc2" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <form action="" method="GET" id="box2">
         <div>
-            <button type="submit">Search</button>
+            <button id="sub" type="submit">Search</button>
         </div>
         <?php
         require('db.php');
@@ -126,19 +134,14 @@
           echo "No Options"; 
         }
         ?>
-      </form>
     </div>
-
+    
     <!-- Model Year Checkboxes -->
     <a onclick="myAccFunc3()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
       Model Year <i class="fa fa-caret-down"></i>
     </a>
 
     <div id="demoAcc3" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <form action="" method="GET" id="box1">
-        <div>
-            <button type="submit">Search</button>
-        </div>
         <?php
         require('db.php');
 
@@ -169,7 +172,6 @@
           echo "No Options"; 
         }
         ?>
-      </form>
     </div>
 
     <!-- Price Checkboxes -->
@@ -178,13 +180,7 @@
     </a>
 
     <div id="demoAcc4" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <form action="" method="GET" id="box1">
-        <div>
-            <button type="submit">Search</button>
-        </div>
         <?php
-        require('db.php');
-
         $price_query = "SELECT DISTINCT Price FROM tv";
         $price_query_run = mysqli_query($con, $price_query);
 
@@ -199,10 +195,11 @@
                 }
                 ?>
                     <div>
+                        
                         <input type="checkbox" name="prices[]" value="<?= $pricelist['Price']; ?>"
                             <?php if(in_array($pricelist['Price'], $checked)){ echo "checked"; } ?>
                         />
-                        <?= $pricelist['Price']; ?>
+                        $<?= $pricelist['Price'] . " or less"; ?>
                     </div>
                 <?php
             }
@@ -212,7 +209,29 @@
           echo "No Options"; 
         }
         ?>
-      </form>
+
+        <?php
+        /*
+        
+
+        $temp = [];
+            //$temp[] = 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000;
+            $temp = array_fill(0, 10, '100');
+            $i = 0;
+            foreach($temp as $pricelist)
+            {
+                $checked = [];
+                ?>
+                    <div>
+                        <input type="checkbox" value="<?= $pricelist[i]; ?>"
+                            <?php if(in_array($pricelist['i'], $checked)){ echo "checked"; } ?>
+                        />
+                    </div>
+                <?php
+                $i = $i + 1;
+            }
+        */
+        ?>
     </div>
 
     <!-- Brands Checkboxes -->
@@ -221,10 +240,6 @@
     </a>
 
     <div id="demoAcc5" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <form action="" method="GET" id="box1">
-        <div>
-            <button type="submit">Search</button>
-        </div>
         <?php
         require('db.php');
 
@@ -255,17 +270,8 @@
           echo "No Options"; 
         }
         ?>
-      </form>
     </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
-    <script> 
-         $('#form1_submit_button').click(function(){ 
-           $('form').each(function(){
-             $(this).submit();
-           });
-         }); 
-    </script>
+    </form>
     
     <a href="Computers.php" class="w3-bar-item w3-button">Computers</a>
     <a href="#" class="w3-bar-item w3-button">Video Games</a>
@@ -321,19 +327,10 @@
                         $sizechecked = [];
                         $sizechecked = $_GET['sizes'];
                     }
-
-                    foreach($sizechecked as $rowsize)
-                    {
-                        $products = "SELECT * FROM tv WHERE ScreenSize = '$rowsize'";
-                        $products_run = mysqli_query($con, $products);
-
-                        if(mysqli_num_rows($products_run) > 0)
-                        {
-                            foreach($products_run as $prodsize) :
-                                array_push($result, $prodsize);
-                            endforeach;
-                        }
-                    }
+                }
+                else
+                {
+                    $sizechecked[0] = 0;
                 }
 
                 if(isset($_GET['ress']))
@@ -343,19 +340,10 @@
                         $reschecked = [];
                         $reschecked = $_GET['ress'];
                     }
-
-                    foreach($reschecked as $rowres)
-                    {
-                        $product2 = "SELECT * FROM tv WHERE Resolution = '$rowres'";
-                        $product2_run = mysqli_query($con, $product2);
-
-                        if(mysqli_num_rows($product2_run) > 0)
-                        {
-                            foreach($product2_run as $prodres) :
-                                array_push($result, $prodres);
-                            endforeach;
-                        }
-                    }
+                }
+                else
+                {
+                    $reschecked[0] = 0;
                 }
 
                 if(isset($_GET['years']))
@@ -365,19 +353,10 @@
                         $yearchecked = [];
                         $yearchecked = $_GET['years'];
                     }
-
-                    foreach($yearchecked as $rowyear)
-                    {
-                        $products = "SELECT * FROM tv WHERE Year = '$rowyear'";
-                        $products_run = mysqli_query($con, $products);
-
-                        if(mysqli_num_rows($products_run) > 0)
-                        {
-                            foreach($products_run as $prodyear) :
-                                array_push($result, $prodyear);
-                            endforeach;
-                        }
-                    }
+                }
+                else
+                {
+                    $yearchecked[0] = 0;
                 }
 
                 if(isset($_GET['prices']))
@@ -387,19 +366,10 @@
                         $pricechecked = [];
                         $pricechecked = $_GET['prices'];
                     }
-
-                    foreach($pricechecked as $rowprice)
-                    {
-                        $products = "SELECT * FROM tv WHERE Price = '$rowprice'";
-                        $products_run = mysqli_query($con, $products);
-
-                        if(mysqli_num_rows($products_run) > 0)
-                        {
-                            foreach($products_run as $prodprice) :
-                                array_push($result, $prodprice);
-                            endforeach;
-                        }
-                    }
+                }
+                else
+                {
+                    $pricechecked[0] = 0;
                 }
 
                 if(isset($_GET['brands']))
@@ -409,17 +379,33 @@
                         $brandchecked = [];
                         $brandchecked = $_GET['brands'];
                     }
+                }
+                else
+                {
+                    $brandchecked[0] = 0;
+                }
 
-                    foreach($brandchecked as $rowbrand)
+                foreach($sizechecked as $rowsize)
+                {
+                    foreach($reschecked as $rowres)
                     {
-                        $products = "SELECT * FROM tv WHERE Brand = '$rowbrand'";
-                        $products_run = mysqli_query($con, $products);
-
-                        if(mysqli_num_rows($products_run) > 0)
+                        foreach($yearchecked as $rowyear)
                         {
-                            foreach($products_run as $prodbrand) :
-                                array_push($result, $prodbrand);
-                            endforeach;
+                            foreach($pricechecked as $rowprice)
+                            {
+                                foreach($brandchecked as $rowbrand)
+                                {
+                                    $products = "SELECT * FROM tv WHERE (ScreenSize = '$rowsize' or '$rowsize' = 0) AND (Resolution = '$rowres' or '$rowres' = 0) AND (Year = '$rowyear' or '$rowyear' = 0) AND (Price <= '$rowprice' or '$rowprice' = 0) AND (Brand = '$rowbrand' or '$rowbrand' = 0)";
+                                    $products_run = mysqli_query($con, $products);
+
+                                    if(mysqli_num_rows($products_run) > 0)
+                                    {
+                                        foreach($products_run as $prodsize) :
+                                            array_push($result, $prodsize);
+                                        endforeach;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -431,7 +417,11 @@
                             ?>
                                 <div class="col-md-4 mt-3">
                                     <div class="border p-2">
-                                        <h6><?= $proditems['ScreenSize'] . " " . $proditems['Resolution'] . " " . $proditems['Year'] . " " . $proditems['Price'] . " " . $proditems['Brand']; ?></h6>
+                                    <h6><?= $proditems['Brand']; ?></h6>
+                                        <h6><?= "Size: " . $proditems['ScreenSize'] . " inch" ?></h6>
+                                        <h6><?= "Resolution: " . $proditems['Resolution'] ?></h6>
+                                        <h6><?= $proditems['Year']; ?></h6>
+                                        <h6><?= "Price: $" . $proditems['Price']; ?></h6>
                                     </div>
                                 </div>
                             <?php
@@ -439,21 +429,15 @@
                 }
                 else
                 {
-                    $products = "SELECT * FROM tv";
-                    $products_run = mysqli_query($con, $products);
-                    if(mysqli_num_rows($products_run) > 0)
-                    {
-                        foreach($products_run as $proditems) :
-                            ?>
-                                <div class="col-md-4 mt-3">
-                                    <div class="border p-2">
-                                        <h6><?= $proditems['ScreenSize'] . " " . $proditems['Resolution'] . " " . $proditems['Year'] . " " . $proditems['Price'] . " " . $proditems['Brand']; ?></h6>
-                                    </div>
-                                </div>
-                            <?php
-                        endforeach;
-                    }
+                    ?>
+                        <div class="col-md-4 mt-3">
+                            <div class="border p-2">
+                                <h6>No Items Found</h6>
+                            </div>
+                        </div>
+                    <?php
                 }
+                
                 
 
                 /*
@@ -478,6 +462,8 @@
   </div>
 
   <div class="w3-black w3-center w3-bottom w3-padding-24">Enjoy your TV :D<a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity"></a></div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <script>
   // Accordion 
@@ -521,6 +507,32 @@ function myAccFunc5() {
     x.className = x.className.replace(" w3-show", "");
   }
 }
+
+function submitForms(){
+    $("#sub").click(function(){
+        $("form").each(function(){
+            var fd = new FormData($ (this) [0]);
+            $.ajax({
+                type: "POST",
+                url: "/CS-360-Group-Project/TVs.php",
+                data: fd,
+                processData: false,
+                contentType: false,
+                success: function(data, status){
+                },
+                error: function(data, status){
+                },
+            });
+        });
+    });
+}
+
+function backup(){
+    $('#box2').submit();
+    $('#box1').submit();
+}
+
+
 
 // Click on the "Jeans" link on page load to open the accordion for demo purposes
 document.getElementById("myBtn").click();
