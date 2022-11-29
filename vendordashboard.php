@@ -26,17 +26,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
     <h3 class="w3-wide"><b>List a Product</b></h3>
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-    <a href="TVs.php" class="w3-bar-item w3-button">TV's'</a>
-    <a href="Computers.php" class="w3-bar-item w3-button">Computers</a>
-    <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
-      Electronics <i class="fa fa-caret-down"></i>
-    </a>
-    <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a href="#" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>TV's</a>
-      <a href="#" class="w3-bar-item w3-button">Computers</a>
-      <a href="VideoGames.php" class="w3-bar-item w3-button">Video Games</a>
-      <a href="#" class="w3-bar-item w3-button">Sound Devices</a>
-    </div>
+    <a href="TV_registration.php" class="w3-bar-item w3-button">TV's</a>
+    <a href="#" class="w3-bar-item w3-button">Computers</a>
     <a href="#" class="w3-bar-item w3-button">Video Games</a>
     <a href="#" class="w3-bar-item w3-button">Sound</a>
     <a href="#" class="w3-bar-item w3-button">Photography</a>
@@ -65,7 +56,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
     
-    <p class="w3-left">Welcome <?php echo $_SESSION['username']; ?>to the Vendor Page</p>
+    <p class="w3-left">Welcome <?php echo $_SESSION['username']; ?> to Bone's Vendor Page</p>
     <p class="w3-right">
       <i class="fa fa-shopping-cart w3-margin-right"></i>
       <i class="fa fa-search"></i>
@@ -116,13 +107,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
       <div class="w3-col s4">
         <h4>About</h4>
         <p><a href="#">About us</a></p>
-        <p><a href="#">We're hiring</a></p>
-        <p><a href="#">Support</a></p>
-        <p><a href="#">Find store</a></p>
-        <p><a href="#">Shipment</a></p>
-        <p><a href="#">Payment</a></p>
-        <p><a href="#">Gift card</a></p>
-        <p><a href="#">Return</a></p>
         <p><a href="#">Help</a></p>
       </div>
 
