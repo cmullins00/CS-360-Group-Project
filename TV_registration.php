@@ -1,3 +1,8 @@
+<?php
+//include auth_session.php file on all user panel pages
+include("auth_session.php");
+//$id = $_SESSION['id']
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +13,16 @@
 <body>
 <?php
     require('db.php');
+
+    $name = $_SESSION['username'];
+   
+
+    $id = "SELECT id FROM vendors WHERE username = '$name'";
+    $result = mysqli_query($con, $id);
+    $row = $result->fetch_assoc();
+    echo "ID " . $row['id'];
+    $venderid = $row['id'];
+
     // When form submitted, insert values into the database.
     if (isset($_REQUEST['ScreenSize'])) {
         // removes backslashes
@@ -22,8 +37,10 @@
         $Price = mysqli_real_escape_string($con, $Price);
         $Brand = stripslashes($_REQUEST['Brand']);
         $Brand = mysqli_real_escape_string($con, $Brand);
-        $query    = "INSERT into `tv` (ScreenSize, Resolution, Year, Price, Brand)
-                     VALUES ('$ScreenSize', '$Resolution', '$Year', '$Price', '$Brand')";
+        $vid = stripslashes($venderid);
+        $vid = mysqli_real_escape_string($con, $vid);
+        $query    = "INSERT into `tv` (ScreenSize, Resolution, Year, Price, Brand, vid)
+                     VALUES ('$ScreenSize', '$Resolution', '$Year', '$Price', '$Brand', '$vid')";
         $result   = mysqli_query($con, $query);
         if ($result) {
             echo "<div class='form'>
@@ -46,7 +63,7 @@
         <input type="text" class="login-input" name="Price" placeholder="Price">
         <input type="text" class="login-input" name="Brand" placeholder="Brand">
         <input type="submit" name="submit" value="Register" class="login-button">
-        
+        <p class="link"><a href="vendordashboard.php">Go Back</a></p>
     </form>
 <?php
     }
