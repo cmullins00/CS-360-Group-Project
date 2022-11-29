@@ -118,7 +118,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                     <h4>About</h4>
                     <?php
                     require('db.php');
-                    $products = "SELECT * FROM tv WHERE id = 1";
+                    $products = "SELECT * FROM tv WHERE id = '$id'";
                     $result = mysqli_query($con, $products);
                     $row = $result->fetch_assoc();
 

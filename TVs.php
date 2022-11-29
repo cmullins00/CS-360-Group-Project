@@ -53,15 +53,13 @@
     <a href="TVs.php" class="w3-bar-item w3-button">Reset Search</a>
     
     <form action="" method="GET" id="box1">
-    <!-- TV Checkboxes -->
+
+    <!-- TV Screen Checkboxes -->
     <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
       TV Screen Size <i class="fa fa-caret-down"></i>
     </a>
 
     <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-        <div>
-            <button id="sub" type="submit">Search</button>
-        </div>
         <?php
         require('db.php');
 
@@ -101,9 +99,6 @@
     </a>
 
     <div id="demoAcc2" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-        <div>
-            <button id="sub" type="submit">Search</button>
-        </div>
         <?php
         require('db.php');
 
@@ -181,6 +176,8 @@
 
     <div id="demoAcc4" class="w3-bar-block w3-hide w3-padding-large w3-medium">
         <?php
+        require('db.php');
+
         $price_query = "SELECT DISTINCT Price FROM tv";
         $price_query_run = mysqli_query($con, $price_query);
 
@@ -209,31 +206,51 @@
           echo "No Options"; 
         }
         ?>
-
-        <?php
-        /*
-        
-
-        $temp = [];
-            //$temp[] = 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000;
-            $temp = array_fill(0, 10, '100');
-            $i = 0;
-            foreach($temp as $pricelist)
-            {
-                $checked = [];
-                ?>
-                    <div>
-                        <input type="checkbox" value="<?= $pricelist[i]; ?>"
-                            <?php if(in_array($pricelist['i'], $checked)){ echo "checked"; } ?>
-                        />
-                    </div>
-                <?php
-                $i = $i + 1;
-            }
-        */
-        ?>
     </div>
 
+    <!-- Brand Checkboxes -->
+    <?php
+    /*
+    <a onclick="myAccFunc5()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+      Brand <i class="fa fa-caret-down"></i>
+    </a>
+
+    <div id="demoAcc5" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+        <?php
+        require('db.php');
+
+        $brand_query = "SELECT DISTINCT Brand FROM tv";
+        $brand_query_run = mysqli_query($con, $brand_query);
+
+        if (mysqli_num_rows($brand_query_run) > 0)
+        {
+            foreach($brand_query_run as $brandlist)
+            {
+                $checked = [];
+                if(isset($_GET['brands']))
+                {
+                    $checked = $_GET['brands'];
+                }
+                ?>
+                    <div>
+                        <input type="checkbox" name="brands[]" value="<?= $brandlist['Brand']; ?>"
+                            <?php if(in_array($brandlist['Brand'], $checked)){ echo "checked"; } ?>
+                        />
+                        <?= $brandlist['Brand']; ?>
+                    </div>
+                <?php
+            }
+        }
+        else 
+        { 
+          echo "No Options"; 
+        }
+        ?>
+    </div>
+    */
+    ?>
+
+    <?php /*
     <!-- Brands Checkboxes -->
     <a onclick="myAccFunc5()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
       TV Brands <i class="fa fa-caret-down"></i>
@@ -271,6 +288,7 @@
         }
         ?>
     </div>
+    */ ?>
     </form>
     
     <a href="Computers.php" class="w3-bar-item w3-button">Computers</a>
@@ -372,18 +390,26 @@
                     $pricechecked[0] = 0;
                 }
 
+                /*
                 if(isset($_GET['brands']))
                 {
                     if(isset($_GET['brands']))
                     {
                         $brandchecked = [];
                         $brandchecked = $_GET['brands'];
+                        ?>
+                        <h6>found a brand name <?php $brandchecked[0]; ?></h6>
+                        <?php
                     }
                 }
                 else
                 {
+                    ?>
+                    <h6>this shit broken</h6>
+                    <?php
                     $brandchecked[0] = 0;
                 }
+                */
 
                 foreach($sizechecked as $rowsize)
                 {
@@ -392,10 +418,8 @@
                         foreach($yearchecked as $rowyear)
                         {
                             foreach($pricechecked as $rowprice)
-                            {
-                                foreach($brandchecked as $rowbrand)
-                                {
-                                    $products = "SELECT * FROM tv WHERE (ScreenSize = '$rowsize' or '$rowsize' = 0) AND (Resolution = '$rowres' or '$rowres' = 0) AND (Year = '$rowyear' or '$rowyear' = 0) AND (Price <= '$rowprice' or '$rowprice' = 0) AND (Brand = '$rowbrand' or '$rowbrand' = 0)";
+                            {                             
+                                    $products = "SELECT * FROM tv WHERE (ScreenSize = '$rowsize' or '$rowsize' = 0) AND (Resolution = '$rowres' or '$rowres' = 0) AND (Year = '$rowyear' or '$rowyear' = 0) AND (Price <= '$rowprice' or '$rowprice' = 0);";
                                     $products_run = mysqli_query($con, $products);
 
                                     if(mysqli_num_rows($products_run) > 0)
@@ -404,7 +428,7 @@
                                             array_push($result, $prodsize);
                                         endforeach;
                                     }
-                                }
+                                
                             }
                         }
                     }
@@ -417,11 +441,12 @@
                             ?>
                                 <div class="col-md-4 mt-3">
                                     <div class="border p-2">
-                                    <h6><?= $proditems['Brand']; ?></h6>
+                                        <h6><?= $proditems['Brand']; ?></h6>
                                         <h6><?= "Size: " . $proditems['ScreenSize'] . " inch" ?></h6>
                                         <h6><?= "Resolution: " . $proditems['Resolution'] ?></h6>
                                         <h6><?= $proditems['Year']; ?></h6>
                                         <h6><?= "Price: $" . $proditems['Price']; ?></h6>
+                                        <h6><a href = 'checkout.php?rn=<?=$proditems['id']?>'>Purchase Item</a></h6>
                                     </div>
                                 </div>
                             <?php
@@ -509,26 +534,6 @@ function myAccFunc5() {
 }
 
 function submitForms(){
-    $("#sub").click(function(){
-        $("form").each(function(){
-            var fd = new FormData($ (this) [0]);
-            $.ajax({
-                type: "POST",
-                url: "/CS-360-Group-Project/TVs.php",
-                data: fd,
-                processData: false,
-                contentType: false,
-                success: function(data, status){
-                },
-                error: function(data, status){
-                },
-            });
-        });
-    });
-}
-
-function backup(){
-    $('#box2').submit();
     $('#box1').submit();
 }
 
