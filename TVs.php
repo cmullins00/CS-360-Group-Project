@@ -40,15 +40,7 @@
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
     <a href="dashboard.php" class="w3-bar-item w3-button">Go Back</a>
-    <input type="submit" class="w3-bar-item w3-button" onclick="submitForms()" id="sub"/>
-    <!-- <input type="submit" class="w3-bar-item w3-button" onclick="submitForms()"/> -->
-
-    <!-- <a href="#" class="w3-bar-item w3-button">Update Search</a> -->
-
-    <!-- form.demoAcc.onclick = function1(){ $('#form1 #form2 #form3').submit(); }); -->
-
-    <!-- <a onclick="function(){ $('#box1').submit(); });" class="w3-bar-item w3-button">Update Search</a> -->
-
+    <a type="button" class="w3-bar-item w3-button" onclick="submitForms()" id="sub">Search</a>
 
     <a href="TVs.php" class="w3-bar-item w3-button">Reset Search</a>
     
@@ -209,6 +201,43 @@
     </div>
 
     <!-- Brand Checkboxes -->
+    <a onclick="myAccFunc5()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+      Brand <i class="fa fa-caret-down"></i>
+    </a>
+
+    <div id="demoAcc5" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+        <?php
+        require('db.php');
+
+        $brand_query = "SELECT DISTINCT Brand FROM tv";
+        $brand_query_run = mysqli_query($con, $brand_query);
+
+        if (mysqli_num_rows($brand_query_run) > 0)
+        {
+            foreach($brand_query_run as $brandlist)
+            {
+                $checked = [];
+                if(isset($_GET['brands']))
+                {
+                    $checked = $_GET['brands'];
+                }
+                ?>
+                    <div>
+                        <input type="checkbox" name="brands[]" value="<?= $brandlist['Brand']; ?>"
+                            <?php if(in_array($brandlist['Brand'], $checked)){ echo "checked"; } ?>
+                        />
+                        <?= $brandlist['Brand']; ?>
+                    </div>
+                <?php
+            }
+        }
+        else 
+        { 
+          echo "No Options"; 
+        }
+        ?>
+    </div>
+
     <?php
     /*
     <a onclick="myAccFunc5()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
@@ -497,7 +526,7 @@ function myAccFunc() {
   if (x.className.indexOf("w3-show") == -1) {
     x.className += " w3-show";
   } else {
-    x.className = x.className.replace(" w3-show", "");
+    x.className = x.className.replace(" w3-show", " w3-hide");
   }
 }
 function myAccFunc2() {
@@ -505,7 +534,7 @@ function myAccFunc2() {
   if (x.className.indexOf("w3-show") == -1) {
     x.className += " w3-show";
   } else {
-    x.className = x.className.replace(" w3-show", "");
+    x.className = x.className.replace(" w3-show", " w3-hide");
   }
 }
 function myAccFunc3() {
