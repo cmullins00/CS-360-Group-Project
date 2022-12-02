@@ -75,7 +75,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
     
     <p class="w3-left">Welcome <?php echo $_SESSION['username']; ?> to Bone's Vendor Page</p>
     <p class="w3-right">
-      <a href="login.php" class="w3-bar-item w3-button">Log Out</a>
+      <a href="vendorlogin.php" class="w3-bar-item w3-button">Log Out</a>
       <i class="fa fa-shopping-cart w3-margin-right"></i>
     </p>
   </header>
