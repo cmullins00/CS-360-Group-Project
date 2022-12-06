@@ -51,7 +51,7 @@
       TV Screen Size <i class="fa fa-caret-down"></i>
     </a>
 
-    <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+    <div id="demoAcc" class="w3-bar-block w3-show w3-padding-large w3-medium">
         <?php
         require('db.php');
 
@@ -282,8 +282,6 @@
     </div>
     */
     ?>
-
-    <?php /*
     <!-- Brands Checkboxes -->
     <a onclick="myAccFunc5()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
       TV Brands <i class="fa fa-caret-down"></i>
@@ -321,7 +319,6 @@
         }
         ?>
     </div>
-    */ ?>
     </form>
     
     <a href="Computers.php" class="w3-bar-item w3-button">Computers</a>

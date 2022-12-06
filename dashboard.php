@@ -34,9 +34,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
     <a href="#" class="w3-bar-item w3-button">Cell Phones</a>
     <a href="internet.php" class="w3-bar-item w3-button">Internet Service</a>
   </div>
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
-  <a href="#footer"  class="w3-bar-item w3-button w3-padding">Subscribe</a>
 </nav>
 
 <!-- Top menu on small screens -->
@@ -113,19 +110,19 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
 
       <div class="w3-col s4 w3-justify">
         <h4>Store</h4>
-        <p><i class="fa fa-fw fa-map-marker"></i> Company Name</p>
+        <p><i class="fa fa-fw fa-map-marker"></i> Bone's Electronics</p>
         <p><i class="fa fa-fw fa-phone"></i> (208)666-6969</p>
-        <p><i class="fa fa-fw fa-envelope"></i> ex@mail.com</p>
+        <p><i class="fa fa-fw fa-envelope"></i> bonesElectronics@mail.com</p>
         <h4>We accept</h4>
         <p><i class="fa fa-fw fa-cc-amex"></i> Amex</p>
         <p><i class="fa fa-fw fa-credit-card"></i> Credit Card</p>
         <br>
-        <i class="fa fa-facebook-official w3-hover-opacity w3-large"></i>
-        <i class="fa fa-instagram w3-hover-opacity w3-large"></i>
-        <i class="fa fa-snapchat w3-hover-opacity w3-large"></i>
-        <i class="fa fa-pinterest-p w3-hover-opacity w3-large"></i>
-        <i class="fa fa-twitter w3-hover-opacity w3-large"></i>
-        <i class="fa fa-linkedin w3-hover-opacity w3-large"></i>
+        <a class="fa fa-facebook-official w3-hover-opacity w3-large" href="https://facebook.com" target="_blank"></a>
+        <a class="fa fa-instagram w3-hover-opacity w3-large" href="https://instagram.com" target="_blank"></a>
+        <a class="fa fa-snapchat w3-hover-opacity w3-large" href="https://snapchat.com" target="_blank"></a>
+        <a class="fa fa-pinterest-p w3-hover-opacity w3-large" href="https://pinterest.com" target="_blank"></a>
+        <a class="fa fa-twitter w3-hover-opacity w3-large" href="https://twitter.com" target="_blank"></a>
+        <a class="fa fa-linkedin w3-hover-opacity w3-large" href="https://www.linkedin.com" target="_blank"></a>
       </div>
     </div>
   </footer>
