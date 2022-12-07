@@ -90,22 +90,34 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
         
 
         <!-- Footer -->
+        
         <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
             <div class="w3-row-padding">
                 <h3>Input Number of Devices</h3>
                 <form class="form" action="" method="post">                    
                     <label for="Computers/Laptops">Computers/Laptops:</label><br />
-                    <input type="number" class="login-input" name="Computers/Laptops" required /><br />
+                    <input type="number" class="login-input" name="Computers" id="Computers" min="0" max="100" required /><br />
                     <label for="Smartphones">Smartphones:</label><br />
-                    <input type="number" class="login-input" name="Smartphones" required /><br />
+                    <input type="number" class="login-input" name="Smartphones" min="0" max="100" required /><br />
                     <label for="Smart TV's">Smart TV's</label><br />
-                    <input type="number" class="login-input" name="Smart TV's'" required /><br />
+                    <input type="number" class="login-input" name="TV" min="0" max="100" required /><br />
                     <label for="Gaming Consoles">Gaming Consoles</label><br />
-                    <input type="number" class="login-input" name="Gaming Consoles" required /><br />
+                    <input type="number" class="login-input" name="Consoles" min="0" max="100" required /><br />
                     <label for="Tablets">Tablets:</label><br />
-                    <input type="number" class="login-input" name="Tablets" required /><br />
+                    <input type="number" class="login-input" name="Tablets" min="0" max="100" required /><br />
                     <input type="submit" name="submit" value="Submit" class="login-button" />                   
                 </form>
+
+        <?PHP
+        if (isset($_POST['submit'])) { //to check if the form was submitted
+            $Computers = $_POST['Computers'];
+            $Smartphones = $_POST['Smartphones'];
+            $TV = $_POST['TV'];
+            $Consoles = $_POST['Consoles'];
+            $Tablets = $_POST['Tablets'];
+            print $Computers;
+        }
+        ?>
 
                 
             </div>
