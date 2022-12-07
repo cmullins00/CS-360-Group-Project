@@ -12,6 +12,7 @@ include("auth_session.php");
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
@@ -108,16 +109,57 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                     <input type="submit" name="submit" value="Submit" class="login-button" />                   
                 </form>
 
-        <?PHP
+                <?PHP
         if (isset($_POST['submit'])) { //to check if the form was submitted
             $Computers = $_POST['Computers'];
             $Smartphones = $_POST['Smartphones'];
             $TV = $_POST['TV'];
             $Consoles = $_POST['Consoles'];
             $Tablets = $_POST['Tablets'];
+            $total = ($Computers * 10) + ($Smartphones * 5) + ($TV * 2) + ($Consoles * 10) + ($Tablets * 5);
             print $Computers;
-        }
-        ?>
+
+            require('db.php');
+
+            $query = "SELECT * FROM internet WHERE bandwidth >= '$total'";
+            $result = mysqli_query($con, $query);
+                if(!empty($result)){
+                    foreach($result as $row) :
+                        //$row = $prod->fetch_assoc();
+                        ?>
+                        <div class="col-md-5 mt-3">
+                            <div class="border p-2">
+                                <hr />
+                                <h3>
+                                    <?= $row['name']; ?>
+                                </h3>
+                                <h3>
+                                    <?= "Bandwidth: " . $row['bandwidth'] ?>
+                                </h3>
+                                <h3>
+                                    <?= "Monthly Price: $" . $row['price'] ?>
+                                </h3>
+                                <hr />
+
+                            </div>
+                        </div>
+
+                <?php
+                    endforeach;
+                }
+                else{
+                ?>
+                <div class="col-md-4 mt-3">
+                    <div class="border p-2">
+                        <h6>No Items Found</h6>
+                    </div>
+                </div>
+                    <?php
+                }
+            }
+            ?>
+        
+       
 
                 
             </div>
