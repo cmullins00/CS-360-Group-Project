@@ -100,10 +100,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
 
   <!-- Subscribe section -->
   <div class="w3-container w3-black w3-padding-32">
-    <h1>Subscribe</h1>
-    <p>To get special offers and VIP treatment:</p>
-    <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p>
-    <button type="button" class="w3-button w3-red w3-margin-bottom">Subscribe</button>
+    
 
     <div class="w3-col s4">
                     <h4>Your Registered Products</h4>
@@ -117,12 +114,19 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                     echo "Your VID # is: " . $row['id'];
                     $vid = $row['id'];
 
+                    ?>
+                      <div>
+                        <h1 style="font-size: 30" >Your Tv's</h1>
+                      </div>
+                    <?php
+                    
                     $products = "SELECT * FROM tv WHERE vid = '$vid'";
                     $result = mysqli_query($con, $products);
 
                     foreach($result as $row) :
                       //$row = $prod->fetch_assoc();
                       ?>
+                      
                         <div class="col-md-20 mt-3">
                         <div class="border p-2">
                             <hr>
@@ -149,8 +153,178 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                       <?php
                         endforeach;
                       ?>
-                    
-                    
+                    <div>
+                      <h1 style="font-size: 30" >Your Computers</h1>
+                    </div>
+                      <?php
+                      $products = "SELECT * FROM computers WHERE vid = '$vid'";
+                      $result = mysqli_query($con, $products);
+                      
+                      foreach($result as $row) :
+                      //$row = $prod->fetch_assoc();
+                      ?>
+                        <div class="col-md-20 mt-3">
+                        <div class="border p-2">
+                            <hr>
+                            <h3>
+                                <?= $row['Brand']; ?>
+                            </h3>
+                            <h3>
+                                <?= $row['Name']; ?>
+                            </h3>
+                            <h3>
+                                <?= "Size: " . $row['ScreenSize'] . " inch" ?>
+                            </h3>
+                            <h3>
+                                <?= "Resolution: " . $row['Resolution'] ?>
+                            </h3>
+                            <h3>
+                                <?= "Ram: " . $row['Ram'] . "Gb"; ?>
+                            </h3>
+                            <h3>
+                                <?= $row['StorageSize'] . "Gb " . $row['StorageType']; ?>
+                            </h3>
+                            <h3>
+                                <?= "OS: " . $row['OS']; ?>
+                            </h3>
+                            <h3>
+                                <?= "$" . $row['Price']; ?>
+                            </h3>
+                            <hr>
+                            
+                        </div>
+                    </div>
+
+                      <?php
+                        endforeach;
+                      ?>
+                    <div>
+                      <h1 style="font-size: 30" >Your Cellphones</h1>
+                    </div>
+                    <?php
+                      $products = "SELECT * FROM cellphones WHERE vid = '$vid'";
+                      $result = mysqli_query($con, $products);
+                      
+                      foreach($result as $row) :
+                      //$row = $prod->fetch_assoc();
+                      ?>
+                        <div class="col-md-20 mt-3">
+                        <div class="border p-2">
+                            <hr>
+                            <h3>
+                                <?= $row['Brand']; ?>
+                            </h3>
+                            <h3>
+                                <?= $row['Name']; ?>
+                            </h3>
+                            <h3>
+                                <?= "Size: " . $row['ScreenSize'] . " inch" ?>
+                            </h3>
+                            <h3>
+                                <?= "LTE: " . $row['WirelessTech'] ?>
+                            </h3>
+                            <h3>
+                                <?= "Ram: " . $row['Ram'] . "Gb"; ?>
+                            </h3>
+                            <h3>
+                                <?= "Storage: " . $row['StorageSize'] . "Gb "; ?>
+                            </h3>
+                            <h3>
+                                <?= "OS: " . $row['OS']; ?>
+                            </h3>
+                            <h3>
+                                <?= "$" . $row['Price']; ?>
+                            </h3>
+                            <hr>
+                            
+                        </div>
+                    </div>
+
+                      <?php
+                        endforeach;
+                      ?>
+
+
+                    <div>
+                      <h1 style="font-size: 30" >Your Cameras</h1>
+                    </div>
+                    <?php
+                      $products = "SELECT * FROM cameras WHERE vid = '$vid'";
+                      $result = mysqli_query($con, $products);
+                      
+                      foreach($result as $row) :
+                      //$row = $prod->fetch_assoc();
+                      ?>
+                        <div class="col-md-20 mt-3">
+                        <div class="border p-2">
+                            <hr>
+                            <h3>
+                                <?= $row['Brand']; ?>
+                            </h3>
+                            <h3>
+                                <?= $row['Name']; ?>
+                            </h3>
+                            <h3>
+                                <?= $row['Megapixels'] . " Megapixels" ?>
+                            </h3>
+                            <h3>
+                                <?= "Aperture: " . $row['MaxAperture'] ?>
+                            </h3>
+                            <h3>
+                                <?= "Resolution: " . $row['VideoResolution']; ?>
+                            </h3>
+                            <h3>
+                                <?= "$" . $row['Price']; ?>
+                            </h3>
+                            <hr>
+                            
+                        </div>
+                    </div>
+
+                      <?php
+                        endforeach;
+                      ?>
+
+                      <div>
+                      <h1 style="font-size: 30" >Your Consoles</h1>
+                    </div>
+                    <?php
+                      $products = "SELECT * FROM consoles WHERE vid = '$vid'";
+                      $result = mysqli_query($con, $products);
+                      
+                      foreach($result as $row) :
+                      //$row = $prod->fetch_assoc();
+                      ?>
+                        <div class="col-md-20 mt-3">
+                        <div class="border p-2">
+                            <hr>
+                            <h3>
+                                <?= $row['Name']; ?>
+                            </h3>
+                            <h3>
+                                <?= "Output Resolution: " . $row['GraphicsQuality'] ?>
+                            </h3>
+                            <h3>
+                                <?= "Ram: " . $row['Ram'] . "Gb"; ?>
+                            </h3>
+                            <h3>
+                                <?= $row['StorageSize'] . "Gb " . $row['StorageType']; ?>
+                            </h3>
+                            <h3>
+                                <?= "CPU Speed: " . $row['CpuPerformance']; ?>
+                            </h3>
+                            <h3>
+                                <?= "$" . $row['Price']; ?>
+                            </h3>
+                            <hr>
+                            
+                        </div>
+                    </div>
+
+                      <?php
+                        endforeach;
+                      ?>
+                      
                     
                     <?php
 
