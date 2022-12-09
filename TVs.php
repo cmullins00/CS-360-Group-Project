@@ -173,7 +173,7 @@
         <?php
         require('db.php');
 
-        $checked = array("1000", "900", "800", "700", "600", "500", "400", "300", "200", "100");
+        $checked = array("1001", "1000", "900", "800", "700", "600", "500", "400", "300", "200", "100");
             foreach($checked as $pricelist)
             {
                 ?>
@@ -198,6 +198,42 @@
                     </div>
                 <?php
             }
+        ?>
+    </div>
+
+    <!-- Brand Checkboxes -->
+    <a onclick="myAccFunc5()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn"> Brand <i class="fa fa-caret-down"></i></a>
+
+    <div id="demoAcc5" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+        <?php
+        require('db.php');
+
+        $brand_query = "SELECT DISTINCT Brand FROM tv";
+        $brand_query_run = mysqli_query($con, $brand_query);
+
+        if (mysqli_num_rows($brand_query_run) > 0)
+        {
+            foreach($brand_query_run as $brandlist)
+            {
+                $checked = [];
+                if(isset($_GET['brands']))
+                {
+                    $checked = $_GET['brands'];
+                }
+                ?>
+                    <div>
+                        <input type="checkbox" name="brands[]" value="<?= $brandlist['Brand']; ?>"
+                            <?php if(in_array($brandlist['Brand'], $checked)){ echo "checked"; } ?>
+                        />
+                        <?= $brandlist['Brand']; ?>
+                    </div>
+                <?php
+            }
+        }
+        else 
+        { 
+          echo "No Options"; 
+        }
         ?>
     </div>
 
@@ -282,43 +318,6 @@
     </div>
     */
     ?>
-    <!-- Brands Checkboxes -->
-    <a onclick="myAccFunc5()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
-      TV Brands <i class="fa fa-caret-down"></i>
-    </a>
-
-    <div id="demoAcc5" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-        <?php
-        require('db.php');
-
-        $brand_query = "SELECT DISTINCT Brand FROM tv";
-        $brand_query_run = mysqli_query($con, $brand_query);
-
-        if (mysqli_num_rows($brand_query_run) > 0)
-        {
-            foreach($brand_query_run as $brandlist)
-            {
-                $checked = [];
-                if(isset($_GET['brands']))
-                {
-                    $checked = $_GET['brands'];
-                }
-                ?>
-                    <div>
-                        <input type="checkbox" name="brands[]" value="<?= $brandlist['Brand']; ?>"
-                            <?php if(in_array($brandlist['Brand'], $checked)){ echo "checked"; } ?>
-                        />
-                        <?= $brandlist['Brand']; ?>
-                    </div>
-                <?php
-            }
-        }
-        else 
-        { 
-          echo "No Options"; 
-        }
-        ?>
-    </div>
     </form>
     
     <a href="Computers.php" class="w3-bar-item w3-button">Computers</a>
@@ -366,13 +365,18 @@
                 $result = [];
                 $result2 = [];
 
+                $temp1 = [];
+                $temp2 = [];
+                $temp3 = [];
+                $temp4 = [];
+                $temp5 = [];
+
+                $similarPrices = [];
+
                 if(isset($_GET['sizes']))
                 {
-                    if(isset($_GET['sizes']))
-                    {
-                        $sizechecked = [];
-                        $sizechecked = $_GET['sizes'];
-                    }
+                    $sizechecked = [];
+                    $sizechecked = $_GET['sizes'];
                 }
                 else
                 {
@@ -381,11 +385,8 @@
 
                 if(isset($_GET['ress']))
                 {
-                    if(isset($_GET['ress']))
-                    {
-                        $reschecked = [];
-                        $reschecked = $_GET['ress'];
-                    }
+                    $reschecked = [];
+                    $reschecked = $_GET['ress'];
                 }
                 else
                 {
@@ -394,11 +395,8 @@
 
                 if(isset($_GET['years']))
                 {
-                    if(isset($_GET['years']))
-                    {
-                        $yearchecked = [];
-                        $yearchecked = $_GET['years'];
-                    }
+                    $yearchecked = [];
+                    $yearchecked = $_GET['years'];
                 }
                 else
                 {
@@ -407,112 +405,155 @@
 
                 if(isset($_GET['prices']))
                 {
-                    if(isset($_GET['prices']))
-                    {
-                        $pricechecked = [];
-                        $pricechecked = $_GET['prices'];
-                    }
+                    $pricechecked = [];
+                    $pricechecked = $_GET['prices'];
                 }
                 else
                 {
                     $pricechecked[0] = 0;
                 }
 
-                /*
                 if(isset($_GET['brands']))
                 {
-                    if(isset($_GET['brands']))
-                    {
-                        $brandchecked = [];
-                        $brandchecked = $_GET['brands'];
-                        ?>
-                        <h6>found a brand name <?php $brandchecked[0]; ?></h6>
-                        <?php
-                    }
+                    $brandchecked = [];
+                    $brandchecked = $_GET['brands'];
                 }
                 else
                 {
-                    ?>
-                    <h6>this shit broken</h6>
-                    <?php
                     $brandchecked[0] = 0;
                 }
-                */
 
                 foreach($sizechecked as $rowsize)
                 {
-                    foreach($reschecked as $rowres)
+                    $products = "SELECT * FROM tv WHERE (ScreenSize = '$rowsize' or '$rowsize' = 0) ORDER BY Price DESC;";
+                    $products_run = mysqli_query($con, $products);
+
+                    if(mysqli_num_rows($products_run) > 0)
                     {
-                        foreach($yearchecked as $rowyear)
-                        {
-                            foreach($pricechecked as $rowprice)
-                            {                             
-                                if ($rowprice < 1000){
-                                    $products = "SELECT * FROM tv WHERE (ScreenSize = '$rowsize' or '$rowsize' = 0) AND (Resolution = '$rowres' or '$rowres' = 0) AND (Year = '$rowyear' or '$rowyear' = 0) AND (Price <= '$rowprice' or '$rowprice' = 0) ORDER BY Price DESC;";
-                                    $products_run = mysqli_query($con, $products);
-                                }
-                                else 
-                                {
-                                    $products = "SELECT * FROM tv WHERE (ScreenSize = '$rowsize' or '$rowsize' = 0) AND (Resolution = '$rowres' or '$rowres' = 0) AND (Year = '$rowyear' or '$rowyear' = 0) AND (Price >= '$rowprice' or Price < '$rowprice' or '$rowprice' = 0) ORDER BY Price DESC;";
-                                    $products_run = mysqli_query($con, $products);
-                                }
-
-                                if($rowprice != 0)
-                                {
-                                    $extraProducts = "SELECT * FROM tv WHERE (ScreenSize = '$rowsize' or '$rowsize' = 0) AND (Resolution = '$rowres' or '$rowres' = 0) AND (Year = '$rowyear' or '$rowyear' = 0) AND ((Price <= ('$rowprice' + 100) AND Price > '$rowprice')) ORDER BY Price DESC;";
-                                    $extraProducts_run = mysqli_query($con, $extraProducts);
-                                }
-                                else
-                                {
-                                    $extraProducts = "SELECT * FROM tv WHERE (ScreenSize = '$rowsize' or '$rowsize' = 0) AND (Resolution = '$rowres' or '$rowres' = 0) AND (Year = '$rowyear' or '$rowyear' = 0) AND (Price <= '$rowprice' or '$rowprice' = 0) ORDER BY Price DESC;";
-                                    $extraProducts_run = mysqli_query($con, $extraProducts);
-                                }
-
-                                if(mysqli_num_rows($products_run) > 0)
-                                {
-                                    foreach($products_run as $prodsize) :
-                                        array_push($result, $prodsize);
-                                    endforeach;
-                                }
-
-                                if(mysqli_num_rows($extraProducts_run) > 0)
-                                {
-                                    foreach($extraProducts_run as $prodsize) :
-                                        array_push($result2, $prodsize);
-                                    endforeach;
-                                }                      
-                            }
-                        }
+                        foreach($products_run as $prodsize) :
+                            array_push($temp1, $prodsize);
+                        endforeach;
                     }
                 }
 
-                if(!empty($result)){
-                    $result = array_map("unserialize", array_unique(array_map("serialize", $result)));
+                foreach($reschecked as $rowres)
+                {
+                    $products = "SELECT * FROM tv WHERE (Resolution = '$rowres' or '$rowres' = 0) ORDER BY Price DESC;";
+                    $products_run = mysqli_query($con, $products);
 
+                    if(mysqli_num_rows($products_run) > 0)
+                    {
+                        foreach($products_run as $prodsize) :
+                            array_push($temp2, $prodsize);
+                        endforeach;
+                    }
+                }
+
+                foreach($yearchecked as $rowyear)
+                {
+                    $products = "SELECT * FROM tv WHERE (Year = '$rowyear' or '$rowyear' = 0) ORDER BY Price DESC;";
+                    $products_run = mysqli_query($con, $products);
+
+                    if(mysqli_num_rows($products_run) > 0)
+                    {
+                        foreach($products_run as $prodsize) :
+                            array_push($temp3, $prodsize);
+                        endforeach;
+                    }
+                }
+
+                foreach($pricechecked as $rowprice)
+                {
+                    if ($rowprice < 1001){
+                        $products = "SELECT * FROM tv WHERE (Price <= '$rowprice' or '$rowprice' = 0) ORDER BY Price DESC;";
+                        $products_run = mysqli_query($con, $products);
+                    }
+                    else 
+                    {
+                        $products = "SELECT * FROM tv WHERE (Price >= '$rowprice' or Price < '$rowprice' or '$rowprice' = 0) ORDER BY Price DESC;";
+                        $products_run = mysqli_query($con, $products);
+                    }
+
+                    if($rowprice != 0)
+                    {
+                        $extraProducts = "SELECT * FROM tv WHERE ((Price <= ('$rowprice' + 100) AND Price > '$rowprice')) ORDER BY Price DESC;";
+                        $extraProducts_run = mysqli_query($con, $extraProducts);
+                    }
+                    else
+                    {
+                        $extraProducts = "SELECT * FROM tv WHERE (Price <= '$rowprice' or '$rowprice' = 0) ORDER BY Price DESC;";
+                        $extraProducts_run = mysqli_query($con, $extraProducts);
+                    }
+
+                    if(mysqli_num_rows($products_run) > 0)
+                    {
+                        foreach($products_run as $prodsize) :
+                            array_push($temp4, $prodsize);
+                        endforeach;
+                    }
+
+                    if(mysqli_num_rows($extraProducts_run) > 0)
+                    {
+                        foreach($extraProducts_run as $prodsize) :
+                            array_push($similarPrices, $prodsize);
+                        endforeach;
+                    }
+                }
+
+                foreach($brandchecked as $rowbrand)
+                {
+                    
+                    if($rowbrand != 0){
+                        $products = "SELECT * FROM tv WHERE (Brand = '$rowbrand') ORDER BY Price DESC;";
+                        $products_run = mysqli_query($con, $products);
+                    }
+                    else
+                    {
+                        $products = "SELECT * FROM tv ORDER BY Price DESC";
+                        $products_run = mysqli_query($con, $products);
+                    }
+
+                    if(mysqli_num_rows($products_run) > 0)
+                    {
+                        foreach($products_run as $prodsize) :
+                            array_push($temp5, $prodsize);
+                        endforeach;
+                    }
+                }
+
+                $result = array_map("unserialize", array_intersect(array_map("serialize", $temp1), array_map("serialize", $temp2), array_map("serialize", $temp3), array_map("serialize", $temp4), array_map("serialize", $temp5)));
+                $result2 = array_map("unserialize", array_intersect(array_map("serialize", $temp1), array_map("serialize", $temp2), array_map("serialize", $temp3), array_map("serialize", $similarPrices), array_map("serialize", $temp5)));
+
+                if(!empty($result)){
                     foreach($result as $proditems) :
-                            ?>
-                                <div class="col-md-4 mt-3">
-                                    <div class="border p-2">
-                                        <h6><?= $proditems['Brand']; ?></h6>
-                                        <h6><?= "Size: " . $proditems['ScreenSize'] . " inch" ?></h6>
-                                        <h6><?= "Resolution: " . $proditems['Resolution'] ?></h6>
-                                        <h6><?= $proditems['Year']; ?></h6>
-                                        <h6><?= "Price: $" . $proditems['Price']; ?></h6>
-                                        <h6><a href = 'checkout.php?rn=<?=$proditems['id']?>'>Purchase Item</a></h6>
-                                    </div>
+                        ?>
+                            <div class="col-md-4 mt-3">
+                                <div class="border p-2">
+                                    <h6><?= $proditems['Brand']; ?></h6>
+                                    <h6><?= "Size: " . $proditems['ScreenSize'] . " inch" ?></h6>
+                                    <h6><?= "Resolution: " . $proditems['Resolution'] ?></h6>
+                                    <h6><?= $proditems['Year']; ?></h6>
+                                    <h6><?= "Price: $" . $proditems['Price']; ?></h6>
+                                    <h6><a href = 'checkout.php?rn=<?=$proditems['id']?>'>Purchase Item</a></h6>
                                 </div>
-                            <?php
+                            </div>
+                        <?php
                     endforeach;
 
                     $result2 = array_map("unserialize", array_unique(array_map("serialize", $result2)));
 
                     $extra = array_map("unserialize", array_diff(array_map("serialize", $result2), array_map("serialize", $result)));
 
+                    ?>
+                    </div>
+                    <div class="card-body row row-cols-lg-4">
+                    <?php
+
                     if (!empty($extra)){
                         ?>
-                        <br>
+                        
                         <hr>
-                        <h2>Similar Prices</h2>
+                        <h2> Similar Prices</h2>
                         <hr>
                         <?php
 
@@ -542,25 +583,6 @@
                         </div>
                     <?php
                 }
-                
-                
-
-                /*
-                $products = "SELECT * FROM tv";
-                $products_run = mysqli_query($con, $products);
-                if(mysqli_num_rows($products_run) > 0)
-                {
-                    foreach($products_run as $proditems) :
-                        ?>
-                            <div class="col-md-4 mt-3">
-                                <div class="border p-2">
-                                    <h6><?= $proditems['ScreenSize'] . " " . $proditems['Resolution'] . " " . $proditems['Year'] . " " . $proditems['Price'] . " " . $proditems['Brand']; ?></h6>
-                                </div>
-                            </div>
-                        <?php
-                    endforeach;
-                }
-                */
             ?>
         </div>
     </div>

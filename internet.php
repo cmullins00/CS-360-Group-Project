@@ -93,7 +93,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
         <!-- Footer -->
         
         <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
-            <div class="w3-row-padding">
+            <div class="w3-row-padding row">
                 <h3>Input Number of Devices</h3>
                 <form class="form" action="" method="post">                    
                     <label for="Computers/Laptops">Computers/Laptops:</label><br />
@@ -117,37 +117,30 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
             $Consoles = $_POST['Consoles'];
             $Tablets = $_POST['Tablets'];
             $total = ($Computers * 10) + ($Smartphones * 5) + ($TV * 2) + ($Consoles * 10) + ($Tablets * 5);
-            print $Computers;
+            //print $Computers;
 
             require('db.php');
 
             $query = "SELECT * FROM internet WHERE bandwidth >= '$total'";
             $result = mysqli_query($con, $query);
-                if(!empty($result)){
-                    foreach($result as $row) :
-                        //$row = $prod->fetch_assoc();
-                        ?>
-                        <div class="col-md-5 mt-3">
-                            <div class="border p-2">
+            if(!empty($result))
+            {
+                foreach($result as $row) :
+                ?>
+                    <div class="col-md-5 mt-3">
+                        <div class="card mt-3">
                                 <hr />
-                                <h3>
-                                    <?= $row['name']; ?>
-                                </h3>
-                                <h3>
-                                    <?= "Bandwidth: " . $row['bandwidth'] ?>
-                                </h3>
-                                <h3>
-                                    <?= "Monthly Price: $" . $row['price'] ?>
-                                </h3>
+                                    <h3><?= $row['name']; ?></h3>
+                                    <h3><?= "Bandwidth: " . $row['bandwidth'] ?></h3>
+                                    <h3><?= "Monthly Price: $" . $row['price'] ?></h3>
                                 <hr />
-
-                            </div>
-                        </div>
-
+                         </div>
+                     </div>
                 <?php
-                    endforeach;
+                endforeach;
                 }
-                else{
+                else
+                {
                 ?>
                 <div class="col-md-4 mt-3">
                     <div class="border p-2">
@@ -158,10 +151,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                 }
             }
             ?>
-        
-       
-
-                
             </div>
         </footer>
 
