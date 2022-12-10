@@ -428,10 +428,22 @@
                 $result = [];
                 $result2 = [];
 
+                $temp1 = [];
+                $temp2 = [];
+                $temp3 = [];
+                $temp4 = [];
+                $temp5 = [];
+                $temp6 = [];
+                $temp7 = [];
+                $temp8 = [];
+                $temp9 = [];
+
+                $similarPrices = [];
+
                 if(isset($_GET['names']))
                 {
-                     $namechecked = [];
-                     $namechecked = $_GET['names'];
+                    $namechecked = [];
+                    $namechecked = $_GET['names'];
                 }
                 else
                 {
@@ -440,11 +452,8 @@
 
                 if(isset($_GET['sizes']))
                 {
-                    if(isset($_GET['sizes']))
-                    {
-                        $sizechecked = [];
-                        $sizechecked = $_GET['sizes'];
-                    }
+                    $sizechecked = [];
+                    $sizechecked = $_GET['sizes'];
                 }
                 else
                 {
@@ -453,11 +462,8 @@
 
                 if(isset($_GET['ress']))
                 {
-                    if(isset($_GET['ress']))
-                    {
-                        $reschecked = [];
-                        $reschecked = $_GET['ress'];
-                    }
+                    $reschecked = [];
+                    $reschecked = $_GET['ress'];
                 }
                 else
                 {
@@ -466,11 +472,8 @@
 
                 if(isset($_GET['ram']))
                 {
-                    if(isset($_GET['ram']))
-                    {
-                        $ramchecked = [];
-                        $ramchecked = $_GET['ram'];
-                    }
+                    $ramchecked = [];
+                    $ramchecked = $_GET['ram'];
                 }
                 else
                 {
@@ -479,24 +482,18 @@
 
                 if(isset($_GET['types']))
                 {
-                    if(isset($_GET['types']))
-                    {
-                        $typechecked = [];
-                        $typechecked = $_GET['types'];
-                    }
+                    $typechecked = [];
+                    $typechecked = $_GET['types'];
                 }
                 else
                 {
                     $typechecked[0] = 0;
                 }
 
-                if(isset($_GET['storages']))
+                if(isset($_GET['storage']))
                 {
-                    if(isset($_GET['storages']))
-                    {
-                        $storagechecked = [];
-                        $storagechecked = $_GET['storages'];
-                    }
+                    $storagechecked = [];
+                    $storagechecked = $_GET['storage'];
                 }
                 else
                 {
@@ -505,24 +502,18 @@
 
                 if(isset($_GET['os']))
                 {
-                    if(isset($_GET['os']))
-                    {
-                        $oschecked = [];
-                        $oschecked = $_GET['os'];
-                    }
+                    $oschecked = [];
+                    $oschecked = $_GET['os'];
                 }
                 else
                 {
                     $oschecked[0] = 0;
                 }
 
-                if(isset($_GET['price']))
+                if(isset($_GET['prices']))
                 {
-                    if(isset($_GET['price']))
-                    {
-                        $pricechecked = [];
-                        $pricechecked = $_GET['price'];
-                    }
+                    $pricechecked = [];
+                    $pricechecked = $_GET['prices'];
                 }
                 else
                 {
@@ -531,11 +522,8 @@
                 
                 if(isset($_GET['brands']))
                 {
-                    if(isset($_GET['brands']))
-                    {
-                        $brandchecked = [];
-                        $brandchecked = $_GET['brands'];
-                    }
+                    $brandchecked = [];
+                    $brandchecked = $_GET['brands'];
                 }
                 else
                 {
@@ -544,69 +532,211 @@
 
                 foreach($namechecked as $rowname)
                 {
-                    foreach($sizechecked as $rowsize)
+                    if($rowname != 0){
+                        $products = "SELECT * FROM computers WHERE (Name = '$rowname') ORDER BY Price DESC;";
+                        $products_run = mysqli_query($con, $products);
+                    }
+                    else
                     {
-                        foreach($reschecked as $rowres)
-                        {
-                            foreach($ramchecked as $rowram)
-                            {
-                                foreach($typechecked as $rowtype)
-                                {      
-                                    foreach($storagechecked as $rowstorage)
-                                    {
-                                        foreach($pricechecked as $rowprice)
-                                        {
-                                            foreach($brandchecked as $rowbrand)
-                                            {
-                                                foreach($oschecked as $rowos)
-                                                {
-                                                    if ($rowprice < 3000){
-                                                        $products = "SELECT * FROM computers WHERE (Name = '$rowname' or '$rowname' = 0) AND (ScreenSize = '$rowsize' or '$rowsize' = 0) AND (Resolution = '$rowres' or '$rowres' = 0) AND (Ram = '$rowram' or '$rowram' = 0) AND (StorageType = '$rowtype' or '$rowtype' = 0) AND (StorageSize = '$rowstorage' or '$rowstorage' = 0) AND (Brand = '$rowbrand' or '$rowbrand' = 0) AND (OS = '$rowos' or '$rowos' = 0) AND (Price <= '$rowprice' or '$rowprice' = 0) ORDER BY Price DESC;";
-                                                        $products_run = mysqli_query($con, $products);
-                                                    }
-                                                    else 
-                                                    {
-                                                        $products = "SELECT * FROM computers WHERE (Name = '$rowname' or '$rowname' = 0) AND (ScreenSize = '$rowsize' or '$rowsize' = 0) AND (Resolution = '$rowres' or '$rowres' = 0) AND (Ram = '$rowram' or '$rowram' = 0) AND (StorageType = '$rowtype' or '$rowtype' = 0) AND (StorageSize = '$rowstorage' or '$rowstorage' = 0) AND (Brand = '$rowbrand' or '$rowbrand' = 0) AND (OS = '$rowos' or '$rowos' = 0) AND (Price >= '$rowprice' or '$rowprice' = 0) ORDER BY Price DESC;";
-                                                        $products_run = mysqli_query($con, $products);
-                                                    }
+                        $products = "SELECT * FROM computers ORDER BY Price DESC";
+                        $products_run = mysqli_query($con, $products);
+                    }
 
-                                                    if($rowprice != 0)
-                                                    {
-                                                        $extraProducts = "SELECT * FROM computers WHERE (Name = '$rowname' or '$rowname' = 0) AND (ScreenSize = '$rowsize' or '$rowsize' = 0) AND (Resolution = '$rowres' or '$rowres' = 0) AND (Ram = '$rowram' or '$rowram' = 0) AND (StorageType = '$rowtype' or '$rowtype' = 0) AND (StorageSize = '$rowstorage' or '$rowstorage' = 0) AND (Brand = '$rowbrand' or '$rowbrand' = 0) AND (OS = '$rowos' or '$rowos' = 0) AND ((Price <= ('$rowprice' + 100) AND Price > '$rowprice')) ORDER BY Price DESC;";
-                                                        $extraProducts_run = mysqli_query($con, $extraProducts);
-                                                    }
-                                                    else
-                                                    {
-                                                        $extraProducts = "SELECT * FROM computers WHERE (Name = '$rowname' or '$rowname' = 0) AND (ScreenSize = '$rowsize' or '$rowsize' = 0) AND (Resolution = '$rowres' or '$rowres' = 0) AND (Ram = '$rowram' or '$rowram' = 0) AND (StorageType = '$rowtype' or '$rowtype' = 0) AND (StorageSize = '$rowstorage' or '$rowstorage' = 0) AND (Brand = '$rowbrand' or '$rowbrand' = 0) AND (OS = '$rowos' or '$rowos' = 0) AND (Price >= '$rowprice' or Price < '$rowprice' or '$rowprice' = 0) ORDER BY Price DESC;";
-                                                        $extraProducts_run = mysqli_query($con, $extraProducts);
-                                                    }
-
-                                                    if(mysqli_num_rows($products_run) > 0)
-                                                    {
-                                                        foreach($products_run as $prodsize) :
-                                                            array_push($result, $prodsize);
-                                                        endforeach;
-                                                    }
-
-                                                    if(mysqli_num_rows($extraProducts_run) > 0)
-                                                    {
-                                                        foreach($extraProducts_run as $prodsize) :
-                                                            array_push($result2, $prodsize);
-                                                        endforeach;
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                    if(mysqli_num_rows($products_run) > 0)
+                    {
+                        foreach($products_run as $prodsize) :
+                            array_push($temp1, $prodsize);
+                        endforeach;
                     }
                 }
 
-                if(!empty($result)){
-                    $result = array_map("unserialize", array_unique(array_map("serialize", $result)));
+                foreach($sizechecked as $rowsize)
+                {
+                    if($rowsize != 0){
+                        $products = "SELECT * FROM computers WHERE (ScreenSize = '$rowsize') ORDER BY Price DESC;";
+                        $products_run = mysqli_query($con, $products);
+                    }
+                    else
+                    {
+                        $products = "SELECT * FROM computers ORDER BY Price DESC";
+                        $products_run = mysqli_query($con, $products);
+                    }
 
+                    if(mysqli_num_rows($products_run) > 0)
+                    {
+                        foreach($products_run as $prodsize) :
+                            array_push($temp2, $prodsize);
+                        endforeach;
+                    }
+                }
+
+                foreach($reschecked as $rowres)
+                {
+                    if($rowres != 0){
+                        $products = "SELECT * FROM computers WHERE (Resolution = '$rowres') ORDER BY Price DESC;";
+                        $products_run = mysqli_query($con, $products);
+                    }
+                    else
+                    {
+                        $products = "SELECT * FROM computers ORDER BY Price DESC";
+                        $products_run = mysqli_query($con, $products);
+                    }
+
+                    if(mysqli_num_rows($products_run) > 0)
+                    {
+                        foreach($products_run as $prodsize) :
+                            array_push($temp3, $prodsize);
+                        endforeach;
+                    }
+                }
+
+                foreach($ramchecked as $rowram)
+                {
+                    if($rowram != 0){
+                        $products = "SELECT * FROM computers WHERE (Ram = '$rowram') ORDER BY Price DESC;";
+                        $products_run = mysqli_query($con, $products);
+                    }
+                    else
+                    {
+                        $products = "SELECT * FROM computers ORDER BY Price DESC";
+                        $products_run = mysqli_query($con, $products);
+                    }
+
+                    if(mysqli_num_rows($products_run) > 0)
+                    {
+                        foreach($products_run as $prodsize) :
+                            array_push($temp4, $prodsize);
+                        endforeach;
+                    }
+                }
+
+                foreach($typechecked as $rowtype)
+                {
+                    if($rowtype != 0){
+                        $products = "SELECT * FROM computers WHERE (StorageType = '$rowtype') ORDER BY Price DESC;";
+                        $products_run = mysqli_query($con, $products);
+                    }
+                    else
+                    {
+                        $products = "SELECT * FROM computers ORDER BY Price DESC";
+                        $products_run = mysqli_query($con, $products);
+                    }
+
+                    if(mysqli_num_rows($products_run) > 0)
+                    {
+                        foreach($products_run as $prodsize) :
+                            array_push($temp5, $prodsize);
+                        endforeach;
+                    }
+                }
+
+                foreach($storagechecked as $rowstorage)
+                {
+                    if($rowstorage != 0){
+                        $products = "SELECT * FROM computers WHERE (StorageSize = '$rowstorage') ORDER BY Price DESC;";
+                        $products_run = mysqli_query($con, $products);
+                    }
+                    else
+                    {
+                        $products = "SELECT * FROM computers ORDER BY Price DESC";
+                        $products_run = mysqli_query($con, $products);
+                    }
+
+                    if(mysqli_num_rows($products_run) > 0)
+                    {
+                        foreach($products_run as $prodsize) :
+                            array_push($temp6, $prodsize);
+                        endforeach;
+                    }
+                }
+
+                foreach($pricechecked as $rowprice)
+                {
+                    if($rowprice != 0)
+                    {
+                        if ($rowprice <= 3000)
+                        {
+                            $products = "SELECT * FROM computers WHERE (Price <= '$rowprice') ORDER BY Price DESC;";
+                            $products_run = mysqli_query($con, $products);
+                        }
+                        else 
+                        {
+                            $products = "SELECT * FROM computers WHERE (Price >= '$rowprice') ORDER BY Price DESC;";
+                            $products_run = mysqli_query($con, $products);
+                        }
+
+                        $extraProducts = "SELECT * FROM computers WHERE ((Price <= ('$rowprice' + 500) AND Price > '$rowprice')) ORDER BY Price DESC;";
+                        $extraProducts_run = mysqli_query($con, $extraProducts);
+                    }
+                    else
+                    {
+                        $extraProducts = "SELECT * FROM computers ORDER BY Price DESC;";
+                        $extraProducts_run = mysqli_query($con, $extraProducts);
+                    }
+
+                    if(mysqli_num_rows($products_run) > 0)
+                    {
+                        foreach($products_run as $prodsize) :
+                            array_push($temp7, $prodsize);
+                        endforeach;
+                    }
+
+                    if(mysqli_num_rows($extraProducts_run) > 0)
+                    {
+                        foreach($extraProducts_run as $prodsize) :
+                            array_push($similarPrices, $prodsize);
+                        endforeach;
+                    }
+                }
+
+                foreach($brandchecked as $rowbrand)
+                {
+                    
+                    if($rowbrand != 0){
+                        $products = "SELECT * FROM computers WHERE (Brand = '$rowbrand') ORDER BY Price DESC;";
+                        $products_run = mysqli_query($con, $products);
+                    }
+                    else
+                    {
+                        $products = "SELECT * FROM computers ORDER BY Price DESC";
+                        $products_run = mysqli_query($con, $products);
+                    }
+
+                    if(mysqli_num_rows($products_run) > 0)
+                    {
+                        foreach($products_run as $prodsize) :
+                            array_push($temp8, $prodsize);
+                        endforeach;
+                    }
+                }
+
+                foreach($oschecked as $rowos)
+                {
+                    
+                    if($rowos != 0){
+                        $products = "SELECT * FROM computers WHERE (OS = '$rowos') ORDER BY Price DESC;";
+                        $products_run = mysqli_query($con, $products);
+                    }
+                    else
+                    {
+                        $products = "SELECT * FROM computers ORDER BY Price DESC";
+                        $products_run = mysqli_query($con, $products);
+                    }
+
+                    if(mysqli_num_rows($products_run) > 0)
+                    {
+                        foreach($products_run as $prodsize) :
+                            array_push($temp9, $prodsize);
+                        endforeach;
+                    }
+                }
+
+
+
+                $result = array_map("unserialize", array_intersect(array_map("serialize", $temp1), array_map("serialize", $temp2), array_map("serialize", $temp3), array_map("serialize", $temp4), array_map("serialize", $temp5), array_map("serialize", $temp6), array_map("serialize", $temp7), array_map("serialize", $temp8), array_map("serialize", $temp9)));
+                $result2 = array_map("unserialize", array_intersect(array_map("serialize", $temp1), array_map("serialize", $temp2), array_map("serialize", $temp3), array_map("serialize", $similarPrices), array_map("serialize", $temp5), array_map("serialize", $temp6), array_map("serialize", $temp7), array_map("serialize", $temp8), array_map("serialize", $temp9)));
+
+                if(!empty($result)){
                     foreach($result as $proditems) :
                             ?>
                                 <div class="col-md-4 mt-3">
@@ -629,9 +759,14 @@
 
                     $extra = array_map("unserialize", array_diff(array_map("serialize", $result2), array_map("serialize", $result)));
 
+                    ?>
+                    </div>
+                    <div class="card-body row row-cols-lg-4">
+                    <?php
+
                     if (!empty($extra)){
                         ?>
-                        <br>
+
                         <hr>
                         <h2>Similar Prices</h2>
                         <hr>
@@ -666,25 +801,6 @@
                         </div>
                     <?php
                 }
-                
-                
-
-                /*
-                $products = "SELECT * FROM tv";
-                $products_run = mysqli_query($con, $products);
-                if(mysqli_num_rows($products_run) > 0)
-                {
-                    foreach($products_run as $proditems) :
-                        ?>
-                            <div class="col-md-4 mt-3">
-                                <div class="border p-2">
-                                    <h6><?= $proditems['ScreenSize'] . " " . $proditems['Resolution'] . " " . $proditems['Year'] . " " . $proditems['Price'] . " " . $proditems['Brand']; ?></h6>
-                                </div>
-                            </div>
-                        <?php
-                    endforeach;
-                }
-                */
             ?>
         </div>
     </div>
