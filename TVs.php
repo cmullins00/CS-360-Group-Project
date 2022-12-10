@@ -236,92 +236,10 @@
         }
         ?>
     </div>
-
-    <?php
-    /*
-    <!-- Price Checkboxes -->
-    <a onclick="myAccFunc4()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
-      Price <i class="fa fa-caret-down"></i>
-    </a>
-
-    <div id="demoAcc4" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-        <?php
-        require('db.php');
-
-        $price_query = "SELECT DISTINCT Price FROM tv";
-        $price_query_run = mysqli_query($con, $price_query);
-
-        if (mysqli_num_rows($price_query_run) > 0)
-        {
-            foreach($price_query_run as $pricelist)
-            {
-                $checked = [];
-                if(isset($_GET['prices']))
-                {
-                    $checked = $_GET['prices'];
-                }
-                ?>
-                    <div>
-                        
-                        <input type="checkbox" name="prices[]" value="<?= $pricelist['Price']; ?>"
-                            <?php if(in_array($pricelist['Price'], $checked)){ echo "checked"; } ?>
-                        />
-                        $<?= $pricelist['Price'] . " or less"; ?>
-                    </div>
-                <?php
-            }
-        }
-        else 
-        { 
-          echo "No Options"; 
-        }
-        ?>
-    </div>
-    */
-    
-    /*
-    <a onclick="myAccFunc5()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
-      Brand <i class="fa fa-caret-down"></i>
-    </a>
-
-    <div id="demoAcc5" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-        <?php
-        require('db.php');
-
-        $brand_query = "SELECT DISTINCT Brand FROM tv";
-        $brand_query_run = mysqli_query($con, $brand_query);
-
-        if (mysqli_num_rows($brand_query_run) > 0)
-        {
-            foreach($brand_query_run as $brandlist)
-            {
-                $checked = [];
-                if(isset($_GET['brands']))
-                {
-                    $checked = $_GET['brands'];
-                }
-                ?>
-                    <div>
-                        <input type="checkbox" name="brands[]" value="<?= $brandlist['Brand']; ?>"
-                            <?php if(in_array($brandlist['Brand'], $checked)){ echo "checked"; } ?>
-                        />
-                        <?= $brandlist['Brand']; ?>
-                    </div>
-                <?php
-            }
-        }
-        else 
-        { 
-          echo "No Options"; 
-        }
-        ?>
-    </div>
-    */
-    ?>
     </form>
     
     <a href="Computers.php" class="w3-bar-item w3-button">Computers</a>
-    <a href="#" class="w3-bar-item w3-button">Video Games</a>
+    <a href="VideoGames.php" class="w3-bar-item w3-button">Video Games</a>
     <a href="#" class="w3-bar-item w3-button">Sound</a>
     <a href="#" class="w3-bar-item w3-button">Photography</a>
     <a href="#" class="w3-bar-item w3-button">Cell Phones</a>

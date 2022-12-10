@@ -734,7 +734,7 @@
 
 
                 $result = array_map("unserialize", array_intersect(array_map("serialize", $temp1), array_map("serialize", $temp2), array_map("serialize", $temp3), array_map("serialize", $temp4), array_map("serialize", $temp5), array_map("serialize", $temp6), array_map("serialize", $temp7), array_map("serialize", $temp8), array_map("serialize", $temp9)));
-                $result2 = array_map("unserialize", array_intersect(array_map("serialize", $temp1), array_map("serialize", $temp2), array_map("serialize", $temp3), array_map("serialize", $similarPrices), array_map("serialize", $temp5), array_map("serialize", $temp6), array_map("serialize", $temp7), array_map("serialize", $temp8), array_map("serialize", $temp9)));
+                $result2 = array_map("unserialize", array_intersect(array_map("serialize", $temp1), array_map("serialize", $temp2), array_map("serialize", $temp3), array_map("serialize", $temp4), array_map("serialize", $temp5), array_map("serialize", $temp6), array_map("serialize", $similarPrices), array_map("serialize", $temp8), array_map("serialize", $temp9)));
 
                 if(!empty($result)){
                     foreach($result as $proditems) :
