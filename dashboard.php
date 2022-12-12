@@ -1,6 +1,17 @@
 <?php
 //include auth_session.php file on all user panel pages
 include("auth_session.php");
+
+if (!isset($_SESSION))
+{
+    session_start();
+}
+
+if (!isset($_SESSION['loggedIn']))
+{
+    header("Location: login.php");
+    die;
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,9 +40,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
     <a href="TVs.php" class="w3-bar-item w3-button">TVs</a>
     <a href="Computers.php" class="w3-bar-item w3-button">Computers</a> 
     <a href="VideoGames.php" class="w3-bar-item w3-button">Video Games</a>
-    <a href="#" class="w3-bar-item w3-button">Sound</a>
-    <a href="#" class="w3-bar-item w3-button">Photography</a>
-    <a href="#" class="w3-bar-item w3-button">Cell Phones</a>
+    <a href="Photography.php" class="w3-bar-item w3-button">Photography</a>
+    <a href="CellPhones.php" class="w3-bar-item w3-button">Cell Phones</a>
     <a href="internet.php" class="w3-bar-item w3-button">Internet Service</a>
   </div>
 </nav>
@@ -56,7 +66,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
     
     <p class="w3-left">Welcome <?php echo $_SESSION['username']; ?> to Bone's Electronics</p>
     <p class="w3-right">
-      <a href="login.php" class="w3-bar-item w3-button">Log Out</a>
+      <a href="logout.php" class="w3-bar-item w3-button">Log Out</a>
       <i class="fa fa-shopping-cart w3-margin-right"></i>
     </p>
   </header>
@@ -81,10 +91,12 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
 
   <!-- Subscribe section -->
   <div class="w3-container w3-black w3-padding-32">
-    <h1>Subscribe</h1>
-    <p>To get special offers and VIP treatment:</p>
-    <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p>
-    <button type="button" class="w3-button w3-red w3-margin-bottom">Subscribe</button>
+    <form action="checkoutsuccess.php">
+        <h1>Subscribe</h1>
+        <p>To get special offers from our newsletter:</p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%" required /></p>
+        <button type="button" class="w3-button w3-red w3-margin-bottom">Subscribe</button>
+    </form>
   </div>
   
   <!-- Footer -->

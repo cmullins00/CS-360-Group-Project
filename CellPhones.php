@@ -16,7 +16,7 @@ if (!isset($_SESSION['loggedIn']))
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Game Consoles</title>
+    <title>Cell Phones</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -57,7 +57,7 @@ if (!isset($_SESSION['loggedIn']))
     <a href="dashboard.php" class="w3-bar-item w3-button">Go Back</a>
     <a type="button" class="w3-bar-item w3-button" onclick="submitForms()" id="sub">Search</a>
 
-    <a href="VideoGames.php" class="w3-bar-item w3-button">Reset Search</a>
+    <a href="cellphones.php" class="w3-bar-item w3-button">Reset Search</a>
     
     <form action="" method="GET" id="box1">
 
@@ -68,7 +68,7 @@ if (!isset($_SESSION['loggedIn']))
         <?php
         require('db.php');
 
-        $name_query = "SELECT DISTINCT Name FROM consoles";
+        $name_query = "SELECT DISTINCT Name FROM cellphones";
         $name_query_run = mysqli_query($con, $name_query);
 
         if (mysqli_num_rows($name_query_run) > 0)
@@ -96,110 +96,33 @@ if (!isset($_SESSION['loggedIn']))
           echo "No Options"; 
         }
         ?>
-      
     </div>
 
-    <!-- Graphics Quality Checkboxes -->
-    <a onclick="myAccFunc2()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn"> Max Graphics Quality <i class="fa fa-caret-down"></i> </a>
+    <!-- Screen Size Checkboxes -->
+    <a onclick="myAccFunc2()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn"> Screen Size <i class="fa fa-caret-down"></i> </a>
 
     <div id="demoAcc2" class="w3-bar-block w3-hide w3-padding-large w3-medium">
         <?php
         require('db.php');
 
-        $query = "SELECT DISTINCT GraphicsQuality FROM consoles ORDER BY GraphicsQuality DESC";
+        $query = "SELECT DISTINCT ScreenSize FROM cellphones ORDER BY ScreenSize DESC";
         $query_run = mysqli_query($con, $query);
 
         if (mysqli_num_rows($query_run) > 0)
         {
-            
-            
             foreach($query_run as $list)
             {
                 $checked = [];
-                if(isset($_GET['graphics']))
+                if(isset($_GET['sizes']))
                 {
-                    $checked = $_GET['graphics'];
+                    $checked = $_GET['sizes'];
                 }
                 ?>
                     <div>
-                        <input type="checkbox" name="graphics[]" id="1" value="<?= $list['GraphicsQuality']; ?>"
-                            <?php if(in_array($list['GraphicsQuality'], $checked)){ echo "checked"; } ?>
+                        <input type="checkbox" name="sizes[]" id="1" value="<?= $list['ScreenSize']; ?>"
+                            <?php if(in_array($list['ScreenSize'], $checked)){ echo "checked"; } ?>
                         />
-                        <?= $list['GraphicsQuality']; ?>
-                    </div>
-                <?php
-            }
-        }
-        else 
-        { 
-          echo "No Options"; 
-        }
-        ?>
-      
-    </div>
-
-    <!-- RAM Checkboxes -->
-    <a onclick="myAccFunc3()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn"> RAM <i class="fa fa-caret-down"></i> </a>
-
-    <div id="demoAcc3" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-        <?php
-        require('db.php');
-
-        $ram_query = "SELECT DISTINCT Ram FROM consoles ORDER BY Ram DESC";
-        $ram_query_run = mysqli_query($con, $ram_query);
-
-        if (mysqli_num_rows($ram_query_run) > 0)
-        {            
-            foreach($ram_query_run as $ramlist)
-            {
-                $checked = [];
-                if(isset($_GET['ram']))
-                {
-                    $checked = $_GET['ram'];
-                }
-                ?>
-                    <div>
-                        <input type="checkbox" name="ram[]" id="1" value="<?= $ramlist['Ram']; ?>"
-                            <?php if(in_array($ramlist['Ram'], $checked)){ echo "checked"; } ?>
-                        />
-                        <?= $ramlist['Ram']; ?> GB
-                    </div>
-                <?php
-            }
-        }
-        else 
-        { 
-          echo "No Options"; 
-        }
-        ?>
-      
-    </div>
-    
-    <!-- Storage Type Checkboxes -->
-    <a onclick="myAccFunc4()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn"> Storage Type <i class="fa fa-caret-down"></i> </a>
-
-    <div id="demoAcc4" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-        <?php
-        require('db.php');
-
-        $type_query = "SELECT DISTINCT StorageType FROM consoles";
-        $type_query_run = mysqli_query($con, $type_query);
-
-        if (mysqli_num_rows($type_query_run) > 0)
-        {
-            foreach($type_query_run as $typelist)
-            {
-                $checked = [];
-                if(isset($_GET['types']))
-                {
-                    $checked = $_GET['types'];
-                }
-                ?>
-                    <div>
-                        <input type="checkbox" name="types[]" value="<?= $typelist['StorageType']; ?>"
-                            <?php if(in_array($typelist['StorageType'], $checked)){ echo "checked"; } ?>
-                        />
-                        <?= $typelist['StorageType']; ?>
+                        <?= $list['ScreenSize']; ?>
                     </div>
                 <?php
             }
@@ -212,32 +135,33 @@ if (!isset($_SESSION['loggedIn']))
     </div>
 
     <!-- Storage Size Checkboxes -->
-    <a onclick="myAccFunc5()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn"> Storage Size <i class="fa fa-caret-down"></i> </a>
+    <a onclick="myAccFunc3()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn"> Storage Size <i class="fa fa-caret-down"></i> </a>
 
-    <div id="demoAcc5" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+    <div id="demoAcc3" class="w3-bar-block w3-hide w3-padding-large w3-medium">
         <?php
         require('db.php');
 
-        $storage_query = "SELECT DISTINCT StorageSize FROM consoles ORDER BY StorageSize DESC";
-        $storage_query_run = mysqli_query($con, $storage_query);
+        $query = "SELECT DISTINCT StorageSize FROM cellphones ORDER BY StorageSize DESC";
+        $query_run = mysqli_query($con, $query);
 
-        if (mysqli_num_rows($storage_query_run) > 0)
+        
+        if (mysqli_num_rows($query_run) > 0)
         {
             
             
-            foreach($storage_query_run as $storagelist)
+            foreach($query_run as $list)
             {
                 $checked = [];
-                if(isset($_GET['storage']))
+                if(isset($_GET['storages']))
                 {
-                    $checked = $_GET['storage'];
+                    $checked = $_GET['storages'];
                 }
                 ?>
                     <div>
-                        <input type="checkbox" name="storage[]" id="1" value="<?= $storagelist['StorageSize']; ?>"
-                            <?php if(in_array($storagelist['StorageSize'], $checked)){ echo "checked"; } ?>
+                        <input type="checkbox" name="storages[]" id="1" value="<?= $list['StorageSize']; ?>"
+                            <?php if(in_array($list['StorageSize'], $checked)){ echo "checked"; } ?>
                         />
-                        <?= $storagelist['StorageSize']; ?> GB
+                        <?= $list['StorageSize']; ?>
                     </div>
                 <?php
             }
@@ -247,23 +171,166 @@ if (!isset($_SESSION['loggedIn']))
           echo "No Options"; 
         }
         ?>
-      
     </div>
 
-    <!-- Price Checkboxes -->
-    <a onclick="myAccFunc6()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn"> Price <i class="fa fa-caret-down"></i> </a>
+    <!-- Ram Checkboxes -->
+    <a onclick="myAccFunc6()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn"> Ram <i class="fa fa-caret-down"></i> </a>
 
     <div id="demoAcc6" class="w3-bar-block w3-hide w3-padding-large w3-medium">
         <?php
         require('db.php');
 
-        $checked = array("501", "500", "400", "300", "200", "100");
+        $query = "SELECT DISTINCT Ram FROM cellphones";
+        $query_run = mysqli_query($con, $query);
+
+        if (mysqli_num_rows($query_run) > 0)
+        {
+            foreach($query_run as $list)
+            {
+                $checked = [];
+                if(isset($_GET['ram']))
+                {
+                    $checked = $_GET['ram'];
+                }
+                ?>
+                    <div>
+                        <input type="checkbox" name="ram[]" value="<?= $list['Ram']; ?>"
+                            <?php if(in_array($list['Ram'], $checked)){ echo "checked"; } ?>
+                        />
+                        <?= $list['Ram']; ?>
+                    </div>
+                <?php
+            }
+        }
+        else 
+        { 
+          echo "No Options"; 
+        }
+        ?>
+    </div>
+
+    <!-- Brand Checkboxes -->
+    <a onclick="myAccFunc7()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn"> Brand <i class="fa fa-caret-down"></i></a>
+
+    <div id="demoAcc7" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+        <?php
+        require('db.php');
+
+        $brand_query = "SELECT DISTINCT Brand FROM cellphones";
+        $brand_query_run = mysqli_query($con, $brand_query);
+
+        if (mysqli_num_rows($brand_query_run) > 0)
+        {
+            foreach($brand_query_run as $brandlist)
+            {
+                $checked = [];
+                if(isset($_GET['brands']))
+                {
+                    $checked = $_GET['brands'];
+                }
+                ?>
+                    <div>
+                        <input type="checkbox" name="brands[]" value="<?= $brandlist['Brand']; ?>"
+                            <?php if(in_array($brandlist['Brand'], $checked)){ echo "checked"; } ?>
+                        />
+                        <?= $brandlist['Brand']; ?>
+                    </div>
+                <?php
+            }
+        }
+        else 
+        { 
+          echo "No Options"; 
+        }
+        ?>
+    </div>
+   
+    <!-- Wireless Tech Checkboxes -->
+    <a onclick="myAccFunc4()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn"> Wireless Tech <i class="fa fa-caret-down"></i> </a>
+
+    <div id="demoAcc4" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+        <?php
+        require('db.php');
+
+        $query = "SELECT DISTINCT WirelessTech FROM cellphones";
+        $query_run = mysqli_query($con, $query);
+
+        if (mysqli_num_rows($query_run) > 0)
+        {
+            foreach($query_run as $list)
+            {
+                $checked = [];
+                if(isset($_GET['tech']))
+                {
+                    $checked = $_GET['tech'];
+                }
+                ?>
+                    <div>
+                        <input type="checkbox" name="tech[]" value="<?= $list['WirelessTech']; ?>"
+                            <?php if(in_array($list['WirelessTech'], $checked)){ echo "checked"; } ?>
+                        />
+                        <?= $list['WirelessTech']; ?>
+                    </div>
+                <?php
+            }
+        }
+        else 
+        { 
+          echo "No Options"; 
+        }
+        ?>
+    </div>
+
+    <!-- OS Checkboxes -->
+    <a onclick="myAccFunc5()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn"> Operating System <i class="fa fa-caret-down"></i> </a>
+
+    <div id="demoAcc5" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+        <?php
+        require('db.php');
+
+        $query = "SELECT DISTINCT OS FROM cellphones";
+        $query_run = mysqli_query($con, $query);
+
+        if (mysqli_num_rows($query_run) > 0)
+        {
+            foreach($query_run as $list)
+            {
+                $checked = [];
+                if(isset($_GET['os']))
+                {
+                    $checked = $_GET['os'];
+                }
+                ?>
+                    <div>
+                        <input type="checkbox" name="os[]" value="<?= $list['OS']; ?>"
+                            <?php if(in_array($list['OS'], $checked)){ echo "checked"; } ?>
+                        />
+                        <?= $list['OS']; ?>
+                    </div>
+                <?php
+            }
+        }
+        else 
+        { 
+          echo "No Options"; 
+        }
+        ?>
+    </div>
+
+    <!-- Price Checkboxes -->
+    <a onclick="myAccFunc8()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn"> Price <i class="fa fa-caret-down"></i> </a>
+
+    <div id="demoAcc8" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+        <?php
+        require('db.php');
+
+        $checked = array("1001", "900", "800", "700", "600", "500", "400", "300", "200", "100");
             foreach($checked as $pricelist)
             {
                 ?>
                     <div>
                         <?php
-                        if ($pricelist < 501){
+                        if ($pricelist < 1001){
                             ?>
                             <input type="checkbox" name="prices[]" value="<?= $pricelist; ?>"
                             />
@@ -284,51 +351,12 @@ if (!isset($_SESSION['loggedIn']))
             }
         ?>
     </div>
-
-    <!-- CPU Performance Checkboxes -->
-    <a onclick="myAccFunc7()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn"> CPU Performance <i class="fa fa-caret-down"></i> </a>
-
-    <div id="demoAcc7" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-        <?php
-        require('db.php');
-
-        $query = "SELECT DISTINCT CpuPerformance FROM consoles ORDER BY CpuPerformance DESC";
-        $query_run = mysqli_query($con, $query);
-
-        if (mysqli_num_rows($query_run) > 0)
-        {
-            
-            
-            foreach($query_run as $list)
-            {
-                $checked = [];
-                if(isset($_GET['performance']))
-                {
-                    $checked = $_GET['performance'];
-                }
-                ?>
-                    <div>
-                        <input type="checkbox" name="performance[]" id="1" value="<?= $list['CpuPerformance']; ?>"
-                            <?php if(in_array($oslist['CpuPerformance'], $checked)){ echo "checked"; } ?>
-                        />
-                        <?= $oslist['CpuPerformance']; ?>
-                    </div>
-                <?php
-            }
-        }
-        else 
-        { 
-          echo "No Options"; 
-        }
-        ?>
-      
-    </div>
     </form>
     
     <a href="TVs.php" class="w3-bar-item w3-button">TVs</a>
     <a href="Computers.php" class="w3-bar-item w3-button">Computers</a>
+    <a href="VideoGames.php" class="w3-bar-item w3-button">Video Games</a>
     <a href="Photography.php" class="w3-bar-item w3-button">Photography</a>
-    <a href="CellPhones.php" class="w3-bar-item w3-button">Cell Phones</a>
   </div>
 </nav>
 
@@ -351,7 +379,7 @@ if (!isset($_SESSION['loggedIn']))
     <!-- Top header -->
     <header class="w3-container w3-xlarge">
     
-    <p class="w3-left">Welcome to the Video Game Page</p>
+    <p class="w3-left">Welcome to the Cell Phone Page</p>
     <p class="w3-right">
         <a href="logout.php" class="w3-bar-item w3-button">Log Out</a>
         <i class="fa fa-shopping-cart w3-margin-right"></i>
@@ -359,7 +387,7 @@ if (!isset($_SESSION['loggedIn']))
     </p>
     
 
-    </header>
+  </header>
 
   <div class = "col-md-12 mt-3">
     <div class="card mt-3">
@@ -377,6 +405,7 @@ if (!isset($_SESSION['loggedIn']))
                 $temp5 = [];
                 $temp6 = [];
                 $temp7 = [];
+                $temp8 = [];
 
                 $similarPrices = [];
 
@@ -390,14 +419,44 @@ if (!isset($_SESSION['loggedIn']))
                     $namechecked[0] = 0;
                 }
 
-                if(isset($_GET['graphics']))
+                if(isset($_GET['sizes']))
                 {
-                    $graphicschecked = [];
-                    $graphicschecked = $_GET['graphics'];
+                    $sizechecked = [];
+                    $sizechecked = $_GET['sizes'];
                 }
                 else
                 {
-                    $graphicschecked[0] = 0;
+                    $sizechecked[0] = 0;
+                }
+
+                if(isset($_GET['storages']))
+                {
+                    $storagechecked = [];
+                    $storagechecked = $_GET['storages'];
+                }
+                else
+                {
+                    $storagechecked[0] = 0;
+                }
+
+                if(isset($_GET['tech']))
+                {
+                    $techchecked = [];
+                    $techchecked = $_GET['tech'];
+                }
+                else
+                {
+                    $techchecked[0] = 0;
+                }
+
+                if(isset($_GET['os']))
+                {
+                    $oschecked = [];
+                    $oschecked = $_GET['os'];
+                }
+                else
+                {
+                    $oschecked[0] = 0;
                 }
 
                 if(isset($_GET['ram']))
@@ -410,24 +469,14 @@ if (!isset($_SESSION['loggedIn']))
                     $ramchecked[0] = 0;
                 }
 
-                if(isset($_GET['types']))
+                if(isset($_GET['brands']))
                 {
-                    $typechecked = [];
-                    $typechecked = $_GET['types'];
+                    $brandchecked = [];
+                    $brandchecked = $_GET['brands'];
                 }
                 else
                 {
-                    $typechecked[0] = 0;
-                }
-
-                if(isset($_GET['storage']))
-                {
-                    $storagechecked = [];
-                    $storagechecked = $_GET['storage'];
-                }
-                else
-                {
-                    $storagechecked[0] = 0;
+                    $brandchecked[0] = 0;
                 }
 
                 if(isset($_GET['prices']))
@@ -439,26 +488,16 @@ if (!isset($_SESSION['loggedIn']))
                 {
                     $pricechecked[0] = 0;
                 }
-                
-                if(isset($_GET['performance']))
-                {
-                    $performancechecked = [];
-                    $performancechecked = $_GET['performance'];
-                }
-                else
-                {
-                    $performancechecked[0] = 0;
-                }
 
-                foreach($namechecked as $rowname)
+                foreach($namechecked as $row)
                 {
-                    if($rowname != 0){
-                        $products = "SELECT * FROM consoles WHERE (Name = '$rowname') ORDER BY Price DESC;";
+                    if($row != 0){
+                        $products = "SELECT * FROM cellphones WHERE (Name = '$row') ORDER BY Price DESC;";
                         $products_run = mysqli_query($con, $products);
                     }
                     else
                     {
-                        $products = "SELECT * FROM consoles ORDER BY Price DESC";
+                        $products = "SELECT * FROM cellphones ORDER BY Price DESC";
                         $products_run = mysqli_query($con, $products);
                     }
 
@@ -470,15 +509,15 @@ if (!isset($_SESSION['loggedIn']))
                     }
                 }
 
-                foreach($graphicschecked as $rowgraphics)
+                foreach($sizechecked as $row)
                 {
-                    if($rowgraphics != 0){
-                        $products = "SELECT * FROM consoles WHERE (GraphicsQuality = '$rowgraphics') ORDER BY Price DESC;";
+                    if($row != 0){
+                        $products = "SELECT * FROM cellphones WHERE (ScreenSize = '$row') ORDER BY Price DESC;";
                         $products_run = mysqli_query($con, $products);
                     }
                     else
                     {
-                        $products = "SELECT * FROM consoles ORDER BY Price DESC";
+                        $products = "SELECT * FROM cellphones ORDER BY Price DESC";
                         $products_run = mysqli_query($con, $products);
                     }
 
@@ -490,15 +529,15 @@ if (!isset($_SESSION['loggedIn']))
                     }
                 }
 
-                foreach($performancechecked as $row)
+                foreach($storagechecked as $row)
                 {
                     if($row != 0){
-                        $products = "SELECT * FROM consoles WHERE (CpuPerformance = '$row') ORDER BY Price DESC;";
+                        $products = "SELECT * FROM cellphones WHERE (StorageSize = '$row') ORDER BY Price DESC;";
                         $products_run = mysqli_query($con, $products);
                     }
                     else
                     {
-                        $products = "SELECT * FROM consoles ORDER BY Price DESC";
+                        $products = "SELECT * FROM cellphones ORDER BY Price DESC";
                         $products_run = mysqli_query($con, $products);
                     }
 
@@ -510,15 +549,15 @@ if (!isset($_SESSION['loggedIn']))
                     }
                 }
 
-                foreach($ramchecked as $rowram)
+                foreach($techchecked as $row)
                 {
-                    if($rowram != 0){
-                        $products = "SELECT * FROM consoles WHERE (Ram = '$rowram') ORDER BY Price DESC;";
+                    if($row != 0){
+                        $products = "SELECT * FROM cellphones WHERE (WirelessTech = '$row') ORDER BY Price DESC;";
                         $products_run = mysqli_query($con, $products);
                     }
                     else
                     {
-                        $products = "SELECT * FROM consoles ORDER BY Price DESC";
+                        $products = "SELECT * FROM cellphones ORDER BY Price DESC";
                         $products_run = mysqli_query($con, $products);
                     }
 
@@ -530,15 +569,15 @@ if (!isset($_SESSION['loggedIn']))
                     }
                 }
 
-                foreach($typechecked as $rowtype)
+                foreach($oschecked as $row)
                 {
-                    if($rowtype != 0){
-                        $products = "SELECT * FROM consoles WHERE (StorageType = '$rowtype') ORDER BY Price DESC;";
+                    if($row != 0){
+                        $products = "SELECT * FROM cellphones WHERE (OS = '$row') ORDER BY Price DESC;";
                         $products_run = mysqli_query($con, $products);
                     }
                     else
                     {
-                        $products = "SELECT * FROM consoles ORDER BY Price DESC";
+                        $products = "SELECT * FROM cellphones ORDER BY Price DESC";
                         $products_run = mysqli_query($con, $products);
                     }
 
@@ -550,15 +589,15 @@ if (!isset($_SESSION['loggedIn']))
                     }
                 }
 
-                foreach($storagechecked as $rowstorage)
+                foreach($ramchecked as $row)
                 {
-                    if($rowstorage != 0){
-                        $products = "SELECT * FROM consoles WHERE (StorageSize = '$rowstorage') ORDER BY Price DESC;";
+                    if($row != 0){
+                        $products = "SELECT * FROM cellphones WHERE (Ram = '$row') ORDER BY Price DESC;";
                         $products_run = mysqli_query($con, $products);
                     }
                     else
                     {
-                        $products = "SELECT * FROM consoles ORDER BY Price DESC";
+                        $products = "SELECT * FROM cellphones ORDER BY Price DESC";
                         $products_run = mysqli_query($con, $products);
                     }
 
@@ -570,34 +609,54 @@ if (!isset($_SESSION['loggedIn']))
                     }
                 }
 
-                foreach($pricechecked as $rowprice)
+                foreach($brandchecked as $row)
                 {
-                    if($rowprice != 0)
-                    {
-                        if ($rowprice <= 500)
-                        {
-                            $products = "SELECT * FROM consoles WHERE (Price <= '$rowprice') ORDER BY Price DESC;";
-                            $products_run = mysqli_query($con, $products);
-                        }
-                        else 
-                        {
-                            $products = "SELECT * FROM consoles WHERE (Price >= '$rowprice') ORDER BY Price DESC;";
-                            $products_run = mysqli_query($con, $products);
-                        }
-
-                        $extraProducts = "SELECT * FROM consoles WHERE ((Price <= ('$rowprice' + 500) AND Price > '$rowprice')) ORDER BY Price DESC;";
-                        $extraProducts_run = mysqli_query($con, $extraProducts);
+                    if($row != 0){
+                        $products = "SELECT * FROM cellphones WHERE (Brand = '$row') ORDER BY Price DESC;";
+                        $products_run = mysqli_query($con, $products);
                     }
                     else
                     {
-                        $extraProducts = "SELECT * FROM consoles ORDER BY Price DESC;";
-                        $extraProducts_run = mysqli_query($con, $extraProducts);
+                        $products = "SELECT * FROM cellphones ORDER BY Price DESC";
+                        $products_run = mysqli_query($con, $products);
                     }
 
                     if(mysqli_num_rows($products_run) > 0)
                     {
                         foreach($products_run as $prodsize) :
                             array_push($temp7, $prodsize);
+                        endforeach;
+                    }
+                }
+
+                foreach($pricechecked as $row)
+                {
+                    if($row != 0)
+                    {
+                        if ($row <= 1000)
+                        {
+                            $products = "SELECT * FROM cellphones WHERE (Price <= '$row') ORDER BY Price DESC;";
+                            $products_run = mysqli_query($con, $products);
+                        }
+                        else 
+                        {
+                            $products = "SELECT * FROM cellphones WHERE (Price >= '$row') ORDER BY Price DESC;";
+                            $products_run = mysqli_query($con, $products);
+                        }
+
+                        $extraProducts = "SELECT * FROM cellphones WHERE ((Price <= ('$row' + 100) AND Price > '$row')) ORDER BY Price DESC;";
+                        $extraProducts_run = mysqli_query($con, $extraProducts);
+                    }
+                    else
+                    {
+                        $extraProducts = "SELECT * FROM cellphones ORDER BY Price DESC;";
+                        $extraProducts_run = mysqli_query($con, $extraProducts);
+                    }
+
+                    if(mysqli_num_rows($products_run) > 0)
+                    {
+                        foreach($products_run as $prodsize) :
+                            array_push($temp8, $prodsize);
                         endforeach;
                     }
 
@@ -611,19 +670,21 @@ if (!isset($_SESSION['loggedIn']))
 
 
 
-                $result = array_map("unserialize", array_intersect(array_map("serialize", $temp1), array_map("serialize", $temp2), array_map("serialize", $temp3), array_map("serialize", $temp4), array_map("serialize", $temp5), array_map("serialize", $temp6), array_map("serialize", $temp7)));
-                $result2 = array_map("unserialize", array_intersect(array_map("serialize", $temp1), array_map("serialize", $temp2), array_map("serialize", $temp3), array_map("serialize", $temp4), array_map("serialize", $temp5), array_map("serialize", $temp6), array_map("serialize", $similarPrices)));
+                $result = array_map("unserialize", array_intersect(array_map("serialize", $temp1), array_map("serialize", $temp2), array_map("serialize", $temp3), array_map("serialize", $temp4), array_map("serialize", $temp5), array_map("serialize", $temp6), array_map("serialize", $temp7), array_map("serialize", $temp8)));
+                $result2 = array_map("unserialize", array_intersect(array_map("serialize", $temp1), array_map("serialize", $temp2), array_map("serialize", $temp3), array_map("serialize", $temp4), array_map("serialize", $temp5), array_map("serialize", $temp6), array_map("serialize", $temp7), array_map("serialize", $similarPrices)));
 
                 if(!empty($result)){
                     foreach($result as $proditems) :
                             ?>
                                 <div class="col-md-4 mt-3">
                                     <div class="border p-2">
+                                        <h6><?= $proditems['Brand']; ?></h6>
                                         <h6><?= $proditems['Name']; ?></h6>
-                                        <h6><?= $proditems['GraphicsQuality']; ?></h6>
-                                        <h6><?= $proditems['CpuPerformance']; ?></h6>
-                                        <h6><?= "Ram: " . $proditems['Ram'] . "GB"; ?></h6>
-                                        <h6><?= $proditems['StorageSize'] . "GB " . $proditems['StorageType']; ?></h6>
+                                        <h6><?= "Screen Size: " . $proditems['ScreenSize']; ?></h6>
+                                        <h6><?= "Storage Size: " . $proditems['StorageSize']; ?></h6>GB
+                                        <h6><?= "RAM: " . $proditems['Ram']; ?></h6>
+                                        <h6><?= "Operating System: " . $proditems['OS']; ?></h6>
+                                        <h6><?= "Wireless Tech: " . $proditems['WirelessTech']; ?></h6>
                                         <h6><?= "Price: $" . $proditems['Price']; ?></h6>
                                         <h6><a href = 'checkout.php?rn=<?=$proditems['id']?>'>Purchase Item</a></h6>
                                     </div>
@@ -652,11 +713,13 @@ if (!isset($_SESSION['loggedIn']))
                             ?>
                                 <div class="col-md-4 mt-3">
                                     <div class="border p-2">
+                                        <h6><?= $proditems['Brand']; ?></h6>
                                         <h6><?= $proditems['Name']; ?></h6>
-                                        <h6><?= $proditems['GraphicsQuality']; ?></h6>
-                                        <h6><?= $proditems['CpuPerformance']; ?></h6>
-                                        <h6><?= "Ram: " . $proditems['Ram'] . "GB"; ?></h6>
-                                        <h6><?= $proditems['StorageSize'] . "GB " . $proditems['StorageType']; ?></h6>
+                                        <h6><?= "Screen Size: " . $proditems['ScreenSize']; ?></h6>
+                                        <h6><?= "Storage Size: " . $proditems['StorageSize']; ?></h6>GB
+                                        <h6><?= "RAM: " . $proditems['Ram']; ?></h6>
+                                        <h6><?= "Operating System: " . $proditems['OS']; ?></h6>
+                                        <h6><?= "Wireless Tech: " . $proditems['WirelessTech']; ?></h6>
                                         <h6><?= "Price: $" . $proditems['Price']; ?></h6>
                                         <h6><a href = 'checkout.php?rn=<?=$proditems['id']?>'>Purchase Item</a></h6>
                                     </div>
@@ -680,7 +743,7 @@ if (!isset($_SESSION['loggedIn']))
     </div>
   </div>
 
-  <div class="w3-black w3-left w3-left w3-bottom w3-padding-16"><a style="margin-left: 200px">Enjoy your Console:D</a></div>
+  <div class="w3-black w3-left w3-left w3-bottom w3-padding-16"><a style="margin-left: 200px">Enjoy your Cell Phone :D</a></div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -751,15 +814,6 @@ function myAccFunc7() {
 
 function myAccFunc8() {
   var x = document.getElementById("demoAcc8");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-
-function myAccFunc9() {
-  var x = document.getElementById("demoAcc9");
   if (x.className.indexOf("w3-show") == -1) {
     x.className += " w3-show";
   } else {

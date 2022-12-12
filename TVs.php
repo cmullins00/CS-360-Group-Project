@@ -1,7 +1,22 @@
+<?php
+include("auth_session.php");
+
+if (!isset($_SESSION))
+{
+    session_start();
+}
+
+if (!isset($_SESSION['loggedIn']))
+{
+    header("Location: login.php");
+    die;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>TV's</title>
+    <title>TVs</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -240,9 +255,8 @@
     
     <a href="Computers.php" class="w3-bar-item w3-button">Computers</a>
     <a href="VideoGames.php" class="w3-bar-item w3-button">Video Games</a>
-    <a href="#" class="w3-bar-item w3-button">Sound</a>
-    <a href="#" class="w3-bar-item w3-button">Photography</a>
-    <a href="#" class="w3-bar-item w3-button">Cell Phones</a>
+    <a href="Photography.php" class="w3-bar-item w3-button">Photography</a>
+    <a href="CellPhones.php" class="w3-bar-item w3-button">Cell Phones</a>
   </div>
 </nav>
 
@@ -259,16 +273,17 @@
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:250px">
 
-  <!-- Push down content on small screens -->
-  <div class="w3-hide-large" style="margin-top:83px, margin-bottom:83px"></div>
+    <!-- Push down content on small screens -->
+    <div class="w3-hide-large" style="margin-top:83px, margin-bottom:83px"></div>
   
-  <!-- Top header -->
-  <header class="w3-container w3-xlarge">
+    <!-- Top header -->
+    <header class="w3-container w3-xlarge">
     
     <p class="w3-left">Welcome to the TV Page</p>
     <p class="w3-right">
-      <i class="fa fa-shopping-cart w3-margin-right"></i>
-      <i class="fa fa-search"></i>
+        <a href="logout.php" class="w3-bar-item w3-button">Log Out</a>
+        <i class="fa fa-shopping-cart w3-margin-right"></i>
+        <i class="fa fa-search"></i>
     </p>
     
 
@@ -506,7 +521,7 @@
     </div>
   </div>
 
-  <div class="w3-black w3-center w3-bottom w3-padding-16" style="">Enjoy your TV :D<a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity"></a></div>
+  <div class="w3-black w3-left w3-left w3-bottom w3-padding-16"><a style="margin-left: 200px">Enjoy your TV :D</a></div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 

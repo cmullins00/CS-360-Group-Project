@@ -2,7 +2,19 @@
 //include auth_session.php file on all user panel pages
 include("auth_session.php");
 //$id = $_SESSION['id']
+
+if (!isset($_SESSION))
+{
+    session_start();
+}
+
+if (!isset($_SESSION['loggedIn']))
+{
+    header("Location: vendorlogin.php");
+    die;
+}
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,7 +87,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
     
     <p class="w3-left">Welcome <?php echo $_SESSION['username']; ?> to Bone's Vendor Page</p>
     <p class="w3-right">
-      <a href="vendorlogin.php" class="w3-bar-item w3-button">Log Out</a>
+      <a href="logout.php" class="w3-bar-item w3-button">Log Out</a>
       <i class="fa fa-shopping-cart w3-margin-right"></i>
     </p>
   </header>
@@ -116,7 +128,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
 
                     ?>
                       <div>
-                        <h1 style="font-size: 30" >Your Tv's</h1>
+                        <h1 style="font-size: 30" >Your TVs</h1>
                       </div>
                     <?php
                     
