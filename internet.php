@@ -117,16 +117,15 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
             $Consoles = $_POST['Consoles'];
             $Tablets = $_POST['Tablets'];
             $total = ($Computers * 10) + ($Smartphones * 5) + ($TV * 2) + ($Consoles * 10) + ($Tablets * 5);
-            print $Computers;
 
             require('db.php');
 
             $query = "SELECT * FROM internet WHERE bandwidth >= '$total'";
             $result = mysqli_query($con, $query);
-                if(!empty($result)){
+                if (mysqli_num_rows($result)>0){
                     foreach($result as $row) :
                         //$row = $prod->fetch_assoc();
-                        ?>
+                ?>
                         <div class="col-md-5 mt-3">
                             <div class="border p-2">
                                 <hr />
@@ -151,7 +150,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                 ?>
                 <div class="col-md-4 mt-3">
                     <div class="border p-2">
-                        <h6>No Items Found</h6>
+                        <h6>No Offers Found</h6>
                     </div>
                 </div>
                     <?php
