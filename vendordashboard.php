@@ -157,6 +157,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                             <h3>
                                 <?= "$" . $row['Price']; ?>
                             </h3>
+                            <h3>
+                              <td><a href = 'TV_delete.php?rn=<?php echo $row['id'] ?>'>Delete </a></td>
+                            </h3>
                             <hr>
                             
                         </div>
@@ -201,6 +204,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                             </h3>
                             <h3>
                                 <?= "$" . $row['Price']; ?>
+                            </h3>
+                            <h3>
+                              <td><a href = 'Computers_delete.php?rn=<?php echo $row['id'] ?>'>Delete </a></td>
                             </h3>
                             <hr>
                             
@@ -247,6 +253,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                             <h3>
                                 <?= "$" . $row['Price']; ?>
                             </h3>
+                            <h3>
+                              <td><a href = 'Cellphone_delete.php?rn=<?php echo $row['id'] ?>'>Delete </a></td>
+                            </h3>
                             <hr>
                             
                         </div>
@@ -288,6 +297,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                             <h3>
                                 <?= "$" . $row['Price']; ?>
                             </h3>
+                            <h3>
+                              <td><a href = 'Photography_delete.php?rn=<?php echo $row['id'] ?>'>Delete </a></td>
+                            </h3>
                             <hr>
                             
                         </div>
@@ -327,6 +339,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                             </h3>
                             <h3>
                                 <?= "$" . $row['Price']; ?>
+                            </h3>
+                            <h3>
+                              <td><a href = 'VideoGame_delete.php?rn=<?php echo $row['id'] ?>'>Delete </a></td>
                             </h3>
                             <hr>
                             
