@@ -64,7 +64,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
     
-    <p class="w3-left">Welcome <?php echo $_SESSION['username']; ?> to Bone's Electronics</p>
+    <p class="w3-left">Welcome <?php echo $_SESSION['username']; ?></p>
     <p class="w3-right">
       <a href="logout.php" class="w3-bar-item w3-button">Log Out</a>
       <i class="fa fa-shopping-cart w3-margin-right"></i>
@@ -92,10 +92,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
   <!-- Subscribe section -->
   <div class="w3-container w3-black w3-padding-32">
     <form action="checkoutsuccess.php">
-        <h1>Subscribe</h1>
-        <p>To get special offers from our newsletter:</p>
-        <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%" required /></p>
-        <button type="button" class="w3-button w3-red w3-margin-bottom">Subscribe</button>
+        <h1>Bone's Electronics</h1>
+        <p>Select your product's category on the left</p>
+        
     </form>
   </div>
   
