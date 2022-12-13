@@ -134,7 +134,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
 
             $query = "SELECT * FROM internet WHERE bandwidth >= '$total'";
             $result = mysqli_query($con, $query);
-            if(!empty($result))
+            if(mysqli_num_rows($result)>0)
             {
                 foreach($result as $row) :
                 ?>
