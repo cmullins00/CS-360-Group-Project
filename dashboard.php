@@ -39,7 +39,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
     <a href="TVs.php" class="w3-bar-item w3-button">TVs</a>
     <a href="Computers.php" class="w3-bar-item w3-button">Computers</a> 
-    <a href="VideoGames.php" class="w3-bar-item w3-button">Video Games</a>
+    <a href="VideoGames.php" class="w3-bar-item w3-button">Video Game Consoles</a>
     <a href="Photography.php" class="w3-bar-item w3-button">Photography</a>
     <a href="CellPhones.php" class="w3-bar-item w3-button">Cell Phones</a>
     <a href="internet.php" class="w3-bar-item w3-button">Internet Service</a>

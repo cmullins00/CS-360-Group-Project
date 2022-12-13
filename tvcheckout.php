@@ -72,8 +72,16 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
             <div class="w3-row-padding">
                 <div class="w3-col s4">
                     <h4>Shipping/Card Details</h4>
+                    <?php
+                    if(isset($_POST['purchase'])){
+                        require('db.php');
+                        $products = "DELETE FROM tv WHERE id = '$id'";
+                        $result = mysqli_query($con, $products);
+                        header("Location: checkoutsuccess.php");
+                    }
+                    ?>
                    
-                    <form action="checkoutsuccess.php">
+                    <form method ="POST">
                         <p>
                             First Name
                             <input class="w3-input w3-border" type="text" placeholder="First Name" name="FirstName" required />
@@ -110,7 +118,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                             CVV
                             <input class="w3-input w3-border" type="text" placeholder="CVV" name="CVV" required />
                         </p>
-                        <button type="submit" class="w3-button w3-block w3-black">Purchase</button>
+                        <button type="submit" value="purchase" name="purchase" class="w3-button w3-block w3-black">Purchase</button>
                     </form>
                 </div>
 

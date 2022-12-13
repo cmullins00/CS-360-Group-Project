@@ -290,7 +290,7 @@ if (!isset($_SESSION['loggedIn']))
     
         <a href="TVs.php" class="w3-bar-item w3-button">TVs</a>
         <a href="Computers.php" class="w3-bar-item w3-button">Computers</a>
-        <a href="VideoGames.php" class="w3-bar-item w3-button">Video Games</a>
+        <a href="VideoGames.php" class="w3-bar-item w3-button">Video Game Consoles</a>
         <a href="CellPhones.php" class="w3-bar-item w3-button">Cell Phones</a>
     </div>
 </nav>
@@ -557,7 +557,7 @@ if (!isset($_SESSION['loggedIn']))
                                             <h6><?= "Max Aperature: " . $proditems['MaxAperture']; ?></h6>
                                             <h6><?= "Video Resolution: " . $proditems['VideoResolution']; ?></h6>
                                             <h6><?= "Price: $" . $proditems['Price']; ?></h6>
-                                            <h6><a href = 'checkout.php?rn=<?=$proditems['id']?>'>Purchase Item</a></h6>
+                                            <h6><a href = 'photographycheckout.php?rn=<?=$proditems['id']?>'>Purchase Item</a></h6>
                                         </div>
                                     </div>
                                 <?php
@@ -590,7 +590,7 @@ if (!isset($_SESSION['loggedIn']))
                                             <h6><?= "Max Aperature: " . $proditems['MaxAperture']; ?></h6>
                                             <h6><?= "Video Resolution: " . $proditems['VideoResolution']; ?></h6>
                                             <h6><?= "Price: $" . $proditems['Price']; ?></h6>
-                                            <h6><a href = 'checkout.php?rn=<?=$proditems['id']?>'>Purchase Item</a></h6>
+                                            <h6><a href = 'photographycheckout.php?rn=<?=$proditems['id']?>'>Purchase Item</a></h6>
                                         </div>
                                     </div>
                                 <?php

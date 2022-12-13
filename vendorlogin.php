@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-<?php
+    <?php
     require('db.php');
     session_start();
     // When form submitted, check and create user session.
@@ -22,6 +22,7 @@
         $rows = mysqli_num_rows($result);
         if ($rows == 1) {
             $_SESSION['username'] = $username;
+            $_SESSION['loggedIn'] = true;
             // Redirect to user dashboard page
             header("Location: vendordashboard.php");
         } else {
@@ -31,7 +32,7 @@
                   </div>";
         }
     } else {
-?>
+    ?>
     <form class="form" method="post" name="login">
         <h1 class="login-title">Vendor Login</h1>
         <input type="text" class="login-input" name="username" placeholder="Username" autofocus="true"/>

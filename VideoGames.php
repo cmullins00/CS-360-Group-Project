@@ -351,7 +351,7 @@ if (!isset($_SESSION['loggedIn']))
     <!-- Top header -->
     <header class="w3-container w3-xlarge">
     
-    <p class="w3-left">Welcome to the Video Game Page</p>
+    <p class="w3-left">Welcome to the Video Game Consoles Page</p>
     <p class="w3-right">
         <a href="logout.php" class="w3-bar-item w3-button">Log Out</a>
         <i class="fa fa-shopping-cart w3-margin-right"></i>
@@ -625,7 +625,7 @@ if (!isset($_SESSION['loggedIn']))
                                         <h6><?= "Ram: " . $proditems['Ram'] . "GB"; ?></h6>
                                         <h6><?= $proditems['StorageSize'] . "GB " . $proditems['StorageType']; ?></h6>
                                         <h6><?= "Price: $" . $proditems['Price']; ?></h6>
-                                        <h6><a href = 'checkout.php?rn=<?=$proditems['id']?>'>Purchase Item</a></h6>
+                                        <h6><a href = 'videogamecheckout.php?rn=<?=$proditems['id']?>'>Purchase Item</a></h6>
                                     </div>
                                 </div>
                             <?php
@@ -658,7 +658,7 @@ if (!isset($_SESSION['loggedIn']))
                                         <h6><?= "Ram: " . $proditems['Ram'] . "GB"; ?></h6>
                                         <h6><?= $proditems['StorageSize'] . "GB " . $proditems['StorageType']; ?></h6>
                                         <h6><?= "Price: $" . $proditems['Price']; ?></h6>
-                                        <h6><a href = 'checkout.php?rn=<?=$proditems['id']?>'>Purchase Item</a></h6>
+                                        <h6><a href = 'videogamecheckout.php?rn=<?=$proditems['id']?>'>Purchase Item</a></h6>
                                     </div>
                                 </div>
                             <?php
