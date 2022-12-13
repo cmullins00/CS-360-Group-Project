@@ -1,7 +1,19 @@
 <?php
 //include auth_session.php file on all user panel pages
 include("auth_session.php");
+
+if (!isset($_SESSION))
+{
+    session_start();
+}
+
+if (!isset($_SESSION['loggedIn']))
+{
+    header("Location: login.php");
+    die;
+}
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,17 +41,15 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
             </h3>
         </div>
         <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-            <a href="TVs.php" class="w3-bar-item w3-button">TV's</a>
+            <a href="dashboard.php" class="w3-bar-item w3-button">Go Back</a>
+            <a href="TVs.php" class="w3-bar-item w3-button">TVs</a>
             <a href="Computers.php" class="w3-bar-item w3-button">Computers</a>
-            <a href="#" class="w3-bar-item w3-button">Video Games</a>
+            <a href="VideoGames.php" class="w3-bar-item w3-button">Video Games</a>
             <a href="#" class="w3-bar-item w3-button">Sound</a>
             <a href="#" class="w3-bar-item w3-button">Photography</a>
             <a href="#" class="w3-bar-item w3-button">Cell Phones</a>
             <a href="internet.php" class="w3-bar-item w3-button">Internet Service</a>
         </div>
-        <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a>
-        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a>
-        <a href="#footer" class="w3-bar-item w3-button w3-padding">Subscribe</a>
     </nav>
 
     <!-- Top menu on small screens -->
@@ -66,7 +76,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                 Welcome to the Internet Service Page
             </p>
             <p class="w3-right">
-                <a href="login.php" class="w3-bar-item w3-button">Log Out</a>
+                <a href="logout.php" class="w3-bar-item w3-button">Log Out</a>
                 <i class="fa fa-shopping-cart w3-margin-right"></i>
             </p>
         </header>
@@ -93,7 +103,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
         <!-- Footer -->
         
         <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
-            <div class="w3-row-padding">
+            <div class="w3-row-padding row">
                 <h3>Input Number of Devices</h3>
                 <form class="form" action="" method="post">                    
                     <label for="Computers/Laptops">Computers/Laptops:</label><br />
@@ -117,36 +127,31 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
             $Consoles = $_POST['Consoles'];
             $Tablets = $_POST['Tablets'];
             $total = ($Computers * 10) + ($Smartphones * 5) + ($TV * 2) + ($Consoles * 10) + ($Tablets * 5);
+            $similarTotal = ($Computers * 10) + ($Smartphones * 5) + ($TV * 2) + ($Consoles * 10) + ($Tablets * 5) + 50;
+            //print $Computers;
 
             require('db.php');
 
             $query = "SELECT * FROM internet WHERE bandwidth >= '$total'";
             $result = mysqli_query($con, $query);
-                if (mysqli_num_rows($result)>0){
-                    foreach($result as $row) :
-                        //$row = $prod->fetch_assoc();
+            if(!empty($result))
+            {
+                foreach($result as $row) :
                 ?>
-                        <div class="col-md-5 mt-3">
-                            <div class="border p-2">
+                    <div class="col-md-5 mt-3">
+                        <div class="card mt-3">
                                 <hr />
-                                <h3>
-                                    <?= $row['name']; ?>
-                                </h3>
-                                <h3>
-                                    <?= "Bandwidth: " . $row['bandwidth'] ?>
-                                </h3>
-                                <h3>
-                                    <?= "Monthly Price: $" . $row['price'] ?>
-                                </h3>
+                                    <h3><?= $row['name']; ?></h3>
+                                    <h3><?= "Bandwidth: " . $row['bandwidth'] ?></h3>
+                                    <h3><?= "Monthly Price: $" . $row['price'] ?></h3>
                                 <hr />
-
-                            </div>
-                        </div>
-
+                         </div>
+                     </div>
                 <?php
-                    endforeach;
+                endforeach;
                 }
-                else{
+                else
+                {
                 ?>
                 <div class="col-md-4 mt-3">
                     <div class="border p-2">
@@ -157,31 +162,12 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                 }
             }
             ?>
-        
-       
-
-                
             </div>
         </footer>
 
         <div class="w3-black w3-center w3-padding-24"></div>
 
         <!-- End page content -->
-    </div>
-
-    <!-- Newsletter Modal -->
-    <div id="newsletter" class="w3-modal">
-        <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
-            <div class="w3-container w3-white w3-center">
-                <i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
-                <h2 class="w3-wide">NEWSLETTER</h2>
-                <p>Join our mailing list to receive updates on new arrivals and special offers.</p>
-                <p>
-                    <input class="w3-input w3-border" type="text" placeholder="Enter e-mail" />
-                </p>
-                <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
-            </div>
-        </div>
     </div>
 
     <script>

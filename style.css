@@ -26,10 +26,10 @@ h1.login-title {
     width: calc(100% - 23px);
 }
 
-    .login-input:focus {
-        border-color: #6e8095;
-        outline: none;
-    }
+.login-input:focus {
+    border-color: #6e8095;
+    outline: none;
+}
 
 .login-button {
     color: #fff;
@@ -50,9 +50,9 @@ h1.login-title {
     margin-bottom: 0px;
 }
 
-    .link a {
-        color: #666;
-    }
+.link a {
+    color: #666;
+}
 
 h3 {
     font-weight: normal;

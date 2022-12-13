@@ -32,7 +32,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
     <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
     <!-- !PAGE CONTENT! -->
-    <div class="w3-main" style="margin-left:250px">
+    <div class="w3-main">
 
         <!-- Push down content on small screens -->
         <div class="w3-hide-large" style="margin-top:83px"></div>
@@ -41,7 +41,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
         <header class="w3-container w3-xlarge">
 
             <p class="w3-left">
-                Checkout
+                Checkout Success!
             </p>
             <p class="w3-right">
                 <i class="fa fa-shopping-cart w3-margin-right"></i>
@@ -66,9 +66,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
         <!-- Footer -->
         <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
             <div class="w3-row-padding">
-                <div class="w3-col s4">
-                    <h4>Thank You for Your Purchase!</h4>
-                    <a href="dashboard.php">Dashboard</a>
+                <div class="w3 s4">
+                    <h4 class="w3-xxlarge">Thank You for Your Purchase!</h4>
+                    <a class="w3-large" href="dashboard.php">Return to the Dashboard</a>
 
                     
                 </div>
