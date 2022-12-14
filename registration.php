@@ -46,6 +46,8 @@
         <input type="password" class="login-input" name="password" placeholder="Password">
         <input type="text" class="login-input" name="first_name" placeholder="First Name">
         <input type="text" class="login-input" name="last_name" placeholder="Last Name">
+        <p>You must agree to our <a href="terms.php">Terms of Service</a> before creating and account.</p>
+        <p><input type="checkbox" name="check" id="GFG" value="1" required /> I understand and agree to the Terms of Service<br /></p>
         <input type="submit" name="submit" value="Register" class="login-button">
         <p class="link"><a href="login.php">Click to Login</a></p>
     </form>

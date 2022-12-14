@@ -43,6 +43,8 @@
         <input type="text" class="login-input" name="email" placeholder="Email Adress" />
         <input type="password" class="login-input" name="password" placeholder="Password" />
         <input type="text" class="login-input" name="company_name" placeholder="Company Name" />
+        <p>You must agree to our <a href="terms.php">Terms of Service</a> before creating and account.</p>
+        <p><input type="checkbox" name="check" id="GFG" value="1" required /> I understand and agree to the Terms of Service<br /></p>
         <input type="submit" name="submit" value="Register" class="login-button" />
         <p class="link">
             <a href="vendorlogin.php">Click to Login</a>
