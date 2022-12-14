@@ -62,7 +62,7 @@ include("auth_session.php");
         <input type="text" class="login-input" name="Year" placeholder="Year" required >
         <input type="text" class="login-input" name="Price" placeholder="Price" required >
         <input type="text" class="login-input" name="Brand" placeholder="Brand" required >
-        <input type="submit" name="submit" value="Register" class="login-button" required >
+        <input type="submit" name="submit" value="Register" class="login-button">
         <p class="link"><a href="vendordashboard.php">Go Back</a></p>
     </form>
 <?php
