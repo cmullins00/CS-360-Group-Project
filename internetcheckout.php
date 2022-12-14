@@ -6,7 +6,7 @@ $id = $_GET['rn'];
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Customer Dashboard</title>
+    <title>Service Checkout</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
@@ -45,7 +45,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
         <header class="w3-container w3-xlarge">
 
             <p class="w3-left">
-                Checkout
+                Service Checkout
             </p>
             <p class="w3-right">
                 <i class="fa fa-shopping-cart w3-margin-right"></i>
@@ -53,26 +53,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
             </p>
         </header>
 
-        <!-- Image header -->
-        <div class="w3-display-container w3-container">
-
-            <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
-
-                <h1 class="w3-hide-large w3-hide-medium">New arrivals</h1>
-
-
-            </div>
-        </div>
-
-        <div class="w3-container w3-text-grey" id="jeans"></div>
-
-
         <!-- Footer -->
         <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
             <div class="w3-row-padding">
-                <div class="w3-col s4">
+                <div class="w3-twothird s4">
                     <h4>Card Details</h4>
-                    
                    
                     <form method ="POST">
                         <p>
@@ -112,19 +97,18 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                             <input class="w3-input w3-border" type="text" placeholder="CVV" name="CVV" required />
                         </p>
                         <p>
-                            You must agree to the following binding <a href="contract.php">Contract</a> before purchasing service. 
-
+                            You must agree to the following binding <a href="contract.php" target="_blank">contract</a> before purchasing service. 
                         </p>
                         <p>
                             <input type="checkbox" name="check" id="GFG"
-                                value="1" required /> I understand and agree to the contract<br />
+                                value="1" required /> I understand and agree to the contract <br>
                         </p>
                         <button type="submit" value="purchase" name="purchase" class="w3-button w3-block w3-black">Purchase</button>
                     </form>
                 </div>
 
-                <div class="w3-col s4">
-                    <h4>About</h4>
+                <div class="w3-third s4">
+                    <h4>Service</h4>
                     <?php
                     require('db.php');
                     $products = "SELECT * FROM internet WHERE id = '$id'";
@@ -134,23 +118,16 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                     ?>
                     <div class="col-md-20 mt-3">
                         <div class="border p-2">
-                            <h3>
-                                <?= $row['name']; ?>
-                            </h3>
-                            <h3>
-                                <?= "Bandwidth: " . $row['bandwidth'] ?>
-                            </h3>
-                            <h3>
-                                <?= "Monthly Price: $" . $row['price'] ?>
-                            </h3>
+                            <h3><?= $row['name']; ?></h3>
+                            <h3><?= "Bandwidth: " . $row['bandwidth'] . " Gb" ?></h3>
                         </div>
                     </div>
                     <?php
 
                     ?>
-                </div>
-                <div class="w3-col s4">
-                    <h4>Price</h4>
+                    <br><br><br>
+                    
+                    <h4>Monthly Price</h4>
                     <?php
                     require('db.php');
                     $products = "SELECT * FROM internet WHERE id = '$id'";
@@ -160,10 +137,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                     ?>
                     <div class="col-md-20 mt-3">
                         <div class="border p-2">
-                            
-                            <h3>
-                                <?= "$" . $row['price']; ?>
-                            </h3>
+                            <h3><?= "$" . $row['price']; ?>.00</h3>
                         </div>
                     </div>
                     <?php

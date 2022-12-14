@@ -743,7 +743,41 @@ if (!isset($_SESSION['loggedIn']))
     </div>
   </div>
 
-  <div class="w3-black w3-left w3-left w3-bottom w3-padding-16"><a style="margin-left: 200px">Enjoy your Cell Phone :D</a></div>
+  <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
+    <div class="w3-row-padding">
+      <div class="w3-col s4">
+        <h4>About Our Store</h4>
+        <p><a href="#">About us</a></p>
+        <p><a href="#">Privacy</a></p>
+        <p><a href="#">Terms and Conditions</a></p>
+        <br>
+        <a class="fa fa-facebook-official w3-hover-opacity w3-large" href="https://facebook.com" target="_blank"></a>
+        <a class="fa fa-instagram w3-hover-opacity w3-large" href="https://instagram.com" target="_blank"></a>
+        <a class="fa fa-snapchat w3-hover-opacity w3-large" href="https://snapchat.com" target="_blank"></a>
+        <a class="fa fa-pinterest-p w3-hover-opacity w3-large" href="https://pinterest.com" target="_blank"></a>
+        <a class="fa fa-twitter w3-hover-opacity w3-large" href="https://twitter.com" target="_blank"></a>
+        <a class="fa fa-linkedin w3-hover-opacity w3-large" href="https://www.linkedin.com" target="_blank"></a>
+      </div>
+
+      <div class="w3-col s4 w3-justify">
+        <h4>Store Info</h4>
+        <p><i class="fa fa-fw fa-map-marker"></i> Bone's Electronics</p>
+        <p><i class="fa fa-fw fa-phone"></i> (208)666-6969</p>
+        <p><i class="fa fa-fw fa-envelope"></i> bonesElectronics@mail.com</p>
+      </div>
+
+      <div class="w3-col s4 w3-justify">
+        <h4>We Accept</h4>
+        <p><i class="fa fa-fw fa-cc-visa"></i> Visa</p>
+        <p><i class="fa fa-fw fa-cc-mastercard"></i> MasterCard</p>
+        <p><i class="fa fa-fw fa-cc-discover"></i> Discover</p>
+        <p><i class="fa fa-fw fa-cc-amex"></i> Amex</p>
+        <p><i class="fa fa-fw fa-credit-card"></i> Credit Card</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="w3-black w3-center w3-padding-24">Enjoy your Cell Phone :D</div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 

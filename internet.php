@@ -45,10 +45,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
             <a href="TVs.php" class="w3-bar-item w3-button">TVs</a>
             <a href="Computers.php" class="w3-bar-item w3-button">Computers</a>
             <a href="VideoGames.php" class="w3-bar-item w3-button">Video Games</a>
-            <a href="#" class="w3-bar-item w3-button">Sound</a>
-            <a href="#" class="w3-bar-item w3-button">Photography</a>
-            <a href="#" class="w3-bar-item w3-button">Cell Phones</a>
-            <a href="internet.php" class="w3-bar-item w3-button">Internet Service</a>
+            <a href="Photography.php" class="w3-bar-item w3-button">Photography</a>
+            <a href="CellPhones.php" class="w3-bar-item w3-button">Cell Phones</a>
         </div>
     </nav>
 
@@ -93,12 +91,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
         </div>
 
         <div class="w3-container w3-text-grey" id="jeans"></div>
-
-        <!-- Product grid -->
-
-
-        <!-- Subscribe section -->
-        
 
         <!-- Footer -->
         

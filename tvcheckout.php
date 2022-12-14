@@ -6,7 +6,7 @@ $id = $_GET['rn'];
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Customer Dashboard</title>
+    <title>TV Checkout</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
@@ -45,7 +45,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
         <header class="w3-container w3-xlarge">
 
             <p class="w3-left">
-                Checkout
+                Product Checkout
             </p>
             <p class="w3-right">
                 <i class="fa fa-shopping-cart w3-margin-right"></i>
@@ -70,7 +70,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
         <!-- Footer -->
         <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
             <div class="w3-row-padding">
-                <div class="w3-col s4">
+                <div class="w3-twothird s4">
                     <h4>Shipping/Card Details</h4>
                     <?php
                     if(isset($_POST['purchase'])){
@@ -122,8 +122,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                     </form>
                 </div>
 
-                <div class="w3-col s4">
-                    <h4>About</h4>
+                <div class="w3-third s4">
+                    <h4>Product</h4>
                     <?php
                     require('db.php');
                     $products = "SELECT * FROM tv WHERE id = '$id'";
@@ -151,8 +151,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                     <?php
 
                     ?>
-                </div>
-                <div class="w3-col s4">
+
+                    <br>
+
                     <h4>Price</h4>
                     <?php
                     require('db.php');
@@ -165,7 +166,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                         <div class="border p-2">
                             
                             <h3>
-                                <?= "$" . $row['Price']; ?>
+                                <?= "$" . $row['Price']; ?>.00
                             </h3>
                         </div>
                     </div>

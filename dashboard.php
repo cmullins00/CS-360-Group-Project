@@ -64,7 +64,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
     
-    <p class="w3-left">Welcome <?php echo $_SESSION['username']; ?></p>
+    <p class="w3-left">Welcome, <?php echo $_SESSION['username']; ?>!</p>
     <p class="w3-right">
       <a href="logout.php" class="w3-bar-item w3-button">Log Out</a>
       <i class="fa fa-shopping-cart w3-margin-right"></i>
@@ -93,7 +93,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
   <div class="w3-container w3-black w3-padding-32">
     <form action="checkoutsuccess.php">
         <h1>Bone's Electronics</h1>
-        <p>Select your product's category on the left</p>
+        <p>Select a category on the left to start browsing!</p>
         
     </form>
   </div>
@@ -102,7 +102,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
     <div class="w3-row-padding">
       <div class="w3-col s4">
-        <h4>Contact</h4>
+        <h4>Contact Us</h4>
         <p>Questions? Go ahead.</p>
         <form action="/action_page.php" target="_blank">
           <p><input class="w3-input w3-border" type="text" placeholder="Name" name="Name" required></p>
@@ -114,19 +114,10 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
       </div>
 
       <div class="w3-col s4">
-        <h4>About</h4>
+        <h4>About Our Store</h4>
         <p><a href="#">About us</a></p>
-        <p><a href="#">Help</a></p>
-      </div>
-
-      <div class="w3-col s4 w3-justify">
-        <h4>Store</h4>
-        <p><i class="fa fa-fw fa-map-marker"></i> Bone's Electronics</p>
-        <p><i class="fa fa-fw fa-phone"></i> (208)666-6969</p>
-        <p><i class="fa fa-fw fa-envelope"></i> bonesElectronics@mail.com</p>
-        <h4>We accept</h4>
-        <p><i class="fa fa-fw fa-cc-amex"></i> Amex</p>
-        <p><i class="fa fa-fw fa-credit-card"></i> Credit Card</p>
+        <p><a href="#">Privacy</a></p>
+        <p><a href="#">Terms and Conditions</a></p>
         <br>
         <a class="fa fa-facebook-official w3-hover-opacity w3-large" href="https://facebook.com" target="_blank"></a>
         <a class="fa fa-instagram w3-hover-opacity w3-large" href="https://instagram.com" target="_blank"></a>
@@ -134,6 +125,19 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
         <a class="fa fa-pinterest-p w3-hover-opacity w3-large" href="https://pinterest.com" target="_blank"></a>
         <a class="fa fa-twitter w3-hover-opacity w3-large" href="https://twitter.com" target="_blank"></a>
         <a class="fa fa-linkedin w3-hover-opacity w3-large" href="https://www.linkedin.com" target="_blank"></a>
+      </div>
+
+      <div class="w3-col s4 w3-justify">
+        <h4>Store Info</h4>
+        <p><i class="fa fa-fw fa-map-marker"></i> Bone's Electronics</p>
+        <p><i class="fa fa-fw fa-phone"></i> (208)666-6969</p>
+        <p><i class="fa fa-fw fa-envelope"></i> bonesElectronics@mail.com</p>
+        <h4>We accept</h4>
+        <p><i class="fa fa-fw fa-cc-visa"></i> Visa</p>
+        <p><i class="fa fa-fw fa-cc-mastercard"></i> MasterCard</p>
+        <p><i class="fa fa-fw fa-cc-discover"></i> Discover</p>
+        <p><i class="fa fa-fw fa-cc-amex"></i> Amex</p>
+        <p><i class="fa fa-fw fa-credit-card"></i> Credit Card</p>
       </div>
     </div>
   </footer>
