@@ -58,11 +58,11 @@ include("auth_session.php");
     <form class="form" action="" method="post">
         <h1 class="login-title">TV Registration</h1>
         <input type="text" class="login-input" name="ScreenSize" placeholder="ScreenSize" required />
-        <input type="text" class="login-input" name="Resolution" placeholder="Resolution">
-        <input type="text" class="login-input" name="Year" placeholder="Year">
-        <input type="text" class="login-input" name="Price" placeholder="Price">
-        <input type="text" class="login-input" name="Brand" placeholder="Brand">
-        <input type="submit" name="submit" value="Register" class="login-button">
+        <input type="text" class="login-input" name="Resolution" placeholder="Resolution" required >
+        <input type="text" class="login-input" name="Year" placeholder="Year" required >
+        <input type="text" class="login-input" name="Price" placeholder="Price" required >
+        <input type="text" class="login-input" name="Brand" placeholder="Brand" required >
+        <input type="submit" name="submit" value="Register" class="login-button" required >
         <p class="link"><a href="vendordashboard.php">Go Back</a></p>
     </form>
 <?php

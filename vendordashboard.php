@@ -57,11 +57,10 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
     <a href="TV_registration.php" class="w3-bar-item w3-button">TVs</a>
-    <a href="Computers.php" class="w3-bar-item w3-button">Computers</a>
-    <a href="VideoGames.php" class="w3-bar-item w3-button">Video Game Consoles</a>
-    <a href="#" class="w3-bar-item w3-button">Sound</a>
-    <a href="#" class="w3-bar-item w3-button">Photography</a>
-    <a href="#" class="w3-bar-item w3-button">Cell Phones</a>
+    <a href="Computer_registration.php" class="w3-bar-item w3-button">Computers</a>
+    <a href="VideoGame_registration.php" class="w3-bar-item w3-button">Video Game Consoles</a>
+    <a href="Photography_registration.php" class="w3-bar-item w3-button">Photography</a>
+    <a href="Cellphone_registration.php" class="w3-bar-item w3-button">Cell Phones</a>
   </div>
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
  
