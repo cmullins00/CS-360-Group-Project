@@ -61,6 +61,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
     <a href="VideoGame_registration.php" class="w3-bar-item w3-button">Video Game Consoles</a>
     <a href="Photography_registration.php" class="w3-bar-item w3-button">Photography</a>
     <a href="Cellphone_registration.php" class="w3-bar-item w3-button">Cell Phones</a>
+    <a href="internet_registration.php" class="w3-bar-item w3-button">Internet Service</a>
   </div>
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
  
@@ -341,6 +342,40 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                             </h3>
                             <h3>
                               <td><a href = 'VideoGame_delete.php?rn=<?php echo $row['id'] ?>'>Delete </a></td>
+                            </h3>
+                            <hr>
+                            
+                        </div>
+                    </div>
+
+                      <?php
+                        endforeach;
+                      ?>
+
+<div>
+                      <h1 style="font-size: 30" >Your Internet Services</h1>
+                    </div>
+                    <?php
+                      $products = "SELECT * FROM internet WHERE vid = '$vid'";
+                      $result = mysqli_query($con, $products);
+                      
+                      foreach($result as $row) :
+                      //$row = $prod->fetch_assoc();
+                      ?>
+                        <div class="col-md-20 mt-3">
+                        <div class="border p-2">
+                            <hr>
+                            <h3>
+                                <?= $row['name']; ?>
+                            </h3>
+                            <h3>
+                                <?= "Bandwidth: " . $row['bandwidth'] ?>
+                            </h3>
+                            <h3>
+                                <?= "$" . $row['price']; ?>
+                            </h3>
+                            <h3>
+                              <td><a href = 'internet_delete.php?rn=<?php echo $row['id'] ?>'>Delete </a></td>
                             </h3>
                             <hr>
                             
