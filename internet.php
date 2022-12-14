@@ -127,13 +127,14 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
             $Consoles = $_POST['Consoles'];
             $Tablets = $_POST['Tablets'];
             $total = ($Computers * 10) + ($Smartphones * 5) + ($TV * 2) + ($Consoles * 10) + ($Tablets * 5);
-            $similarTotal = ($Computers * 10) + ($Smartphones * 5) + ($TV * 2) + ($Consoles * 10) + ($Tablets * 5) + 50;
-            //print $Computers;
+            $similarTotal = ($Computers * 10) + ($Smartphones * 5) + ($TV * 2) + ($Consoles * 10) + ($Tablets * 5) - 60;
 
             require('db.php');
 
             $query = "SELECT * FROM internet WHERE bandwidth >= '$total'";
             $result = mysqli_query($con, $query);
+            $querysimilar = "SELECT * FROM internet WHERE bandwidth >= '$similarTotal' AND bandwidth < '$total'";
+            $resultsimilar = mysqli_query($con, $querysimilar);
             if(mysqli_num_rows($result)>0)
             {
                 foreach($result as $row) :
@@ -144,6 +145,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                                     <h3><?= $row['name']; ?></h3>
                                     <h3><?= "Bandwidth: " . $row['bandwidth'] ?></h3>
                                     <h3><?= "Monthly Price: $" . $row['price'] ?></h3>
+                                    <h3><a href = 'internetcheckout.php?rn=<?=$row['id']?>'>Purchase Service</a></h3>
                                 <hr />
                          </div>
                      </div>
@@ -158,7 +160,30 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                         <h6>No Offers Found</h6>
                     </div>
                 </div>
-                    <?php
+                <?php
+                }
+            if(mysqli_num_rows($resultsimilar)>0)
+            {
+                ?>
+
+                <hr />
+                <h2> Services Just Outside Your Bandwidth Needs</h2>
+                <hr />
+                <?php
+                foreach($resultsimilar as $row) :
+                ?>
+                    <div class="col-md-5 mt-3">
+                        <div class="card mt-3">
+                                <hr />
+                                    <h3><?= $row['name']; ?></h3>
+                                    <h3><?= "Bandwidth: " . $row['bandwidth'] ?></h3>
+                                    <h3><?= "Monthly Price: $" . $row['price'] ?></h3>
+                                    <h3><a href = 'internetcheckout.php?rn=<?=$row['id']?>'>Purchase Service</a></h3>
+                                <hr />
+                         </div>
+                     </div>
+                <?php
+                endforeach;
                 }
             }
             ?>
