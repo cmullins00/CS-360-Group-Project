@@ -17,7 +17,7 @@ if (!isset($_SESSION['loggedIn']))
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Terms and Conditions</title>
+    <title>Privacy Page</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
@@ -72,7 +72,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
         <header class="w3-container w3-xlarge">
 
             <p class="w3-left">
-                Welcome to the Terms and Conditions Page
+                Welcome to the Privacy Page
             </p>
             <p class="w3-right">
                 <a href="logout.php" class="w3-bar-item w3-button">Log Out</a>
@@ -97,11 +97,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
         
         <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
             <div class="w3-row-padding row">
-                <h2>Terms and Conditions</h2>
+                <h2>Privacy</h2>
             </div>
             <div class="w3-left-align w3-margin">
                 <h4>
-                    This is where we outline the contract that a customer would enter in to in order to purchase products or services from our website.
+                    This is where a customer can learn more about how we handle privacy.
                 </h4>
                 <br>
                 <h4>
@@ -133,6 +133,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
     </div>
 
     <script>
+
 // Click on the "Jeans" link on page load to open the accordion for demo purposes
 document.getElementById("myBtn").click();
 

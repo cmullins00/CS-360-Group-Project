@@ -616,9 +616,9 @@ if (!isset($_SESSION['loggedIn']))
     <div class="w3-row-padding">
       <div class="w3-col s4">
         <h4>About Our Store</h4>
-        <p><a href="#">About us</a></p>
-        <p><a href="#">Privacy</a></p>
-        <p><a href="#">Terms and Conditions</a></p>
+        <p><a href="about.php">About us</a></p>
+        <p><a href="privacy.php">Privacy</a></p>
+        <p><a href="contract.php">Terms and Conditions</a></p>
         <br>
         <a class="fa fa-facebook-official w3-hover-opacity w3-large" href="https://facebook.com" target="_blank"></a>
         <a class="fa fa-instagram w3-hover-opacity w3-large" href="https://instagram.com" target="_blank"></a>

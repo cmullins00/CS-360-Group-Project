@@ -104,7 +104,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
       <div class="w3-col s4">
         <h4>Contact Us</h4>
         <p>Questions? Go ahead.</p>
-        <form action="/action_page.php" target="_blank">
+        <form action="http://localhost/CS-360-Group-Project/thank.php">
           <p><input class="w3-input w3-border" type="text" placeholder="Name" name="Name" required></p>
           <p><input class="w3-input w3-border" type="text" placeholder="Email" name="Email" required></p>
           <p><input class="w3-input w3-border" type="text" placeholder="Subject" name="Subject" required></p>
@@ -115,9 +115,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
 
       <div class="w3-col s4">
         <h4>About Our Store</h4>
-        <p><a href="#">About us</a></p>
-        <p><a href="#">Privacy</a></p>
-        <p><a href="#">Terms and Conditions</a></p>
+        <p><a href="about.php">About us</a></p>
+        <p><a href="privacy.php">Privacy</a></p>
+        <p><a href="contract.php">Terms and Conditions</a></p>
         <br>
         <a class="fa fa-facebook-official w3-hover-opacity w3-large" href="https://facebook.com" target="_blank"></a>
         <a class="fa fa-instagram w3-hover-opacity w3-large" href="https://instagram.com" target="_blank"></a>
