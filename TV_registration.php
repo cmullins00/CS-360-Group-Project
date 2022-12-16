@@ -20,7 +20,6 @@ include("auth_session.php");
     $id = "SELECT id FROM vendors WHERE username = '$name'";
     $result = mysqli_query($con, $id);
     $row = $result->fetch_assoc();
-    echo "ID " . $row['id'];
     $venderid = $row['id'];
 
     // When form submitted, insert values into the database.
@@ -57,7 +56,7 @@ include("auth_session.php");
 ?>
     <form class="form" action="" method="post">
         <h1 class="login-title">TV Registration</h1>
-        <input type="text" class="login-input" name="ScreenSize" placeholder="ScreenSize" required />
+        <input type="text" class="login-input" name="ScreenSize" placeholder="Screen Size" required />
         <input type="text" class="login-input" name="Resolution" placeholder="Resolution" required >
         <input type="text" class="login-input" name="Year" placeholder="Year" required >
         <input type="text" class="login-input" name="Price" placeholder="Price" required >

@@ -20,7 +20,6 @@ include("auth_session.php");
     $id = "SELECT id FROM vendors WHERE username = '$name'";
     $result = mysqli_query($con, $id);
     $row = $result->fetch_assoc();
-    echo "ID " . $row['id'];
     $venderid = $row['id'];
 
     // When form submitted, insert values into the database.
@@ -52,9 +51,9 @@ include("auth_session.php");
 ?>
     <form class="form" action="" method="post">
         <h1 class="login-title">Internet Service Registration</h1>
-        <input type="text" class="login-input" name="name" placeholder="name" required />
-        <input type="text" class="login-input" name="bandwidth" placeholder="bandwidth" required >
-        <input type="text" class="login-input" name="price" placeholder="price" required >
+        <input type="text" class="login-input" name="name" placeholder="Service Name" required />
+        <input type="text" class="login-input" name="bandwidth" placeholder="Bandwidth" required >
+        <input type="text" class="login-input" name="price" placeholder="Price" required >
         <input type="submit" name="submit" value="Register" class="login-button">
         <p class="link"><a href="vendordashboard.php">Go Back</a></p>
     </form>

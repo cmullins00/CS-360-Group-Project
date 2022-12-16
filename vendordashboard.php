@@ -85,7 +85,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
     
-    <p class="w3-left">Welcome <?php echo $_SESSION['username']; ?> to Bone's Vendor Page</p>
+    <p class="w3-left">Welcome, <?php echo $_SESSION['username']; ?>!</p>
     <p class="w3-right">
       <a href="logout.php" class="w3-bar-item w3-button">Log Out</a>
       <i class="fa fa-shopping-cart w3-margin-right"></i>
@@ -112,7 +112,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
 
   <!-- Subscribe section -->
   <div class="w3-container w3-black w3-padding-32">
-    
+    <h2>Bone's Electronics Vendor Page</h2>
 
     <div class="w3-col s4">
                     <h4>Your Registered Products</h4>
@@ -127,9 +127,10 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                     $vid = $row['id'];
 
                     ?>
-                      <div>
+                    <br>
+                    <div>
                         <h1 style="font-size: 30" >Your TVs</h1>
-                      </div>
+                    </div>
                     <?php
                     
                     $products = "SELECT * FROM tv WHERE vid = '$vid'";
@@ -352,8 +353,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif}
                         endforeach;
                       ?>
 
-<div>
-                      <h1 style="font-size: 30" >Your Internet Services</h1>
+                    <div>
+                      <h1 style="font-size: 30" >Your Services</h1>
                     </div>
                     <?php
                       $products = "SELECT * FROM internet WHERE vid = '$vid'";

@@ -20,7 +20,6 @@ include("auth_session.php");
     $id = "SELECT id FROM vendors WHERE username = '$name'";
     $result = mysqli_query($con, $id);
     $row = $result->fetch_assoc();
-    echo "ID " . $row['id'];
     $venderid = $row['id'];
 
     // When form submitted, insert values into the database.
@@ -65,11 +64,11 @@ include("auth_session.php");
         <h1 class="login-title">Cellphone Registration</h1>
         <input type="text" class="login-input" name="Brand" placeholder="Brand" required />
         <input type="text" class="login-input" name="Name" placeholder="Name" required >
-        <input type="text" class="login-input" name="ScreenSize" placeholder="ScreenSize" required >
-        <input type="text" class="login-input" name="WirelessTech" placeholder="WirelessTech" required >
-        <input type="text" class="login-input" name="Ram" placeholder="Ram" required >
-        <input type="text" class="login-input" name="StorageSize" placeholder="StorageSize" required >
-        <input type="text" class="login-input" name="OS" placeholder="OS" required >
+        <input type="text" class="login-input" name="ScreenSize" placeholder="Screen Size" required >
+        <input type="text" class="login-input" name="WirelessTech" placeholder="Wireless Tech" required >
+        <input type="text" class="login-input" name="Ram" placeholder="RAM" required >
+        <input type="text" class="login-input" name="StorageSize" placeholder="Storage Size" required >
+        <input type="text" class="login-input" name="OS" placeholder="Operating System" required >
         <input type="text" class="login-input" name="Price" placeholder="Price" required >
         <input type="submit" name="submit" value="Register" class="login-button">
         <p class="link"><a href="vendordashboard.php">Go Back</a></p>

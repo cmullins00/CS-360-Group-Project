@@ -20,7 +20,6 @@ include("auth_session.php");
     $id = "SELECT id FROM vendors WHERE username = '$name'";
     $result = mysqli_query($con, $id);
     $row = $result->fetch_assoc();
-    echo "ID " . $row['id'];
     $venderid = $row['id'];
 
     // When form submitted, insert values into the database.
@@ -62,8 +61,8 @@ include("auth_session.php");
         <input type="text" class="login-input" name="Brand" placeholder="Brand" required />
         <input type="text" class="login-input" name="Name" placeholder="Name" required >
         <input type="text" class="login-input" name="Megapixels" placeholder="Megapixels" required >
-        <input type="text" class="login-input" name="MaxAperture" placeholder="MaxAperture" required >
-        <input type="text" class="login-input" name="VideoResolution" placeholder="VideoResolution" required >
+        <input type="text" class="login-input" name="MaxAperture" placeholder="Max Aperture" required >
+        <input type="text" class="login-input" name="VideoResolution" placeholder="Video Resolution" required >
         <input type="text" class="login-input" name="Price" placeholder="Price" required >
         <input type="submit" name="submit" value="Register" class="login-button">
         <p class="link"><a href="vendordashboard.php">Go Back</a></p>

@@ -20,7 +20,6 @@ include("auth_session.php");
     $id = "SELECT id FROM vendors WHERE username = '$name'";
     $result = mysqli_query($con, $id);
     $row = $result->fetch_assoc();
-    echo "ID " . $row['id'];
     $venderid = $row['id'];
 
     // When form submitted, insert values into the database.
@@ -61,11 +60,11 @@ include("auth_session.php");
     <form class="form" action="" method="post">
         <h1 class="login-title">Console Registration</h1>
         <input type="text" class="login-input" name="Name" placeholder="Name" required >
-        <input type="text" class="login-input" name="GraphicsQuality" placeholder="GraphicsQuality" required >
-        <input type="text" class="login-input" name="CpuPerformance" placeholder="CpuPerformance" required >
-        <input type="text" class="login-input" name="Ram" placeholder="Ram" required >
-        <input type="text" class="login-input" name="StorageType" placeholder="StorageType" required >
-        <input type="text" class="login-input" name="StorageSize" placeholder="StorageSize" required >
+        <input type="text" class="login-input" name="GraphicsQuality" placeholder="Maximum Graphics Quality" required >
+        <input type="text" class="login-input" name="CpuPerformance" placeholder="CPU Performance" required >
+        <input type="text" class="login-input" name="Ram" placeholder="RAM" required >
+        <input type="text" class="login-input" name="StorageType" placeholder="Storage Type" required >
+        <input type="text" class="login-input" name="StorageSize" placeholder="Storage Size" required >
         <input type="text" class="login-input" name="Price" placeholder="Price" required >
         <input type="submit" name="submit" value="Register" class="login-button">
         <p class="link"><a href="vendordashboard.php">Go Back</a></p>
